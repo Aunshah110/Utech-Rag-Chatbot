@@ -1,0 +1,24 @@
+{
+  "name": "rag-ingestion-pipeline",
+  "version": "1.0.0",
+  "description": "Crawl -> Clean -> Chunk ingestion pipeline for a university RAG chatbot",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "crawl": "ts-node src/crawl.ts",
+    "clean": "ts-node src/clean.ts",
+    "chunk": "ts-node src/chunk.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "axios": "^1.7.9",
+    "cheerio": "^1.0.0",
+    "zod": "^3.24.1",
+    "js-tiktoken": "^1.0.15"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "typescript": "^5.7.3",
+    "ts-node": "^10.9.2"
+  }
+}
