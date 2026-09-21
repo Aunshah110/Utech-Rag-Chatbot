@@ -5,20 +5,26 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "crawl": "ts-node src/crawl.ts",
-    "clean": "ts-node src/clean.ts",
-    "chunk": "ts-node src/chunk.ts",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "crawl": "ts-node scripts/crawl.ts",
+    "clean": "ts-node scripts/clean.ts",
+    "chunk": "ts-node scripts/chunk.ts",
+    "embed": "ts-node scripts/embed.ts",
+    "index": "ts-node scripts/index.ts"
   },
   "dependencies": {
-    "axios": "^1.7.9",
-    "cheerio": "^1.0.0",
-    "zod": "^3.24.1",
-    "js-tiktoken": "^1.0.15"
+    "@upstash/vector": "^1.2.3",
+    "axios": "^1.20.0",
+    "cheerio": "^1.2.0",
+    "cohere-ai": "^8.1.0",
+    "dotenv": "^18.0.2",
+    "js-tiktoken": "^1.0.15",
+    "openai": "^7.20.0",
+    "zod": "^3.24.1"
   },
   "devDependencies": {
-    "@types/node": "^22.10.5",
-    "typescript": "^5.7.3",
-    "ts-node": "^10.9.2"
+    "@types/node": "^22.20.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
   }
 }

@@ -16,6 +16,7 @@ export class PipelineError extends Error {
     }
 }
 
+export class EmbedError extends PipelineError { }
 export class CrawlError extends PipelineError { }
 export class CleanError extends PipelineError { }
 export class ChunkError extends PipelineError { }

@@ -1,55 +1,97 @@
-// types.ts
-//  Single source of truth for the data contracts passed between pipeline
-//  stages: crawl.ts -> clean.ts -> chunk.ts.
+// scripts/types.ts
+// Single source of truth for pipeline data contracts.
+// crawl.ts -> clean.ts -> chunk.ts -> embed.ts
 
-/** A single page as fetched by crawl.ts, before any cleaning/parsing. */
+// ---------------------------------------------------------------------------
+// Stage 1: Raw crawled page
+// ---------------------------------------------------------------------------
+
 export interface RawPage {
-    url: string;
-    html: string;
-    statusCode: number;
-    fetchedAt: string;
-    contentType: string;
-    depth: number;
+  url: string;
+  html: string;
+  statusCode: number;
+  fetchedAt: string;
+  contentType: string;
+  depth: number;
 }
+
+// ---------------------------------------------------------------------------
+// Stage 2: Cleaned page
+// ---------------------------------------------------------------------------
 
 export interface Heading {
-    level: number;
-    text: string;
+  level: number;
+  text: string;
 }
+
+export type ContentBlockType = 'paragraph' | 'list' | 'table' | 'faq';
 
 export interface ContentBlock {
-    type: 'paragraph' | 'list' | 'table';
-    content: string;
-    headingPath: string[];
+  type: ContentBlockType;
+  content: string;
+  headingPath: string[];
 }
 
-/** A page after clean.ts has parsed and normalized it. */
 export interface CleanedPage {
-    url: string;
-    title: string;
-    headings: Heading[];
-    textBlocks: ContentBlock[];
-    /** ISO-8601 timestamp of when cleaning was performed. */
-    cleanedAt: string;
-    /** SHA-256 hash of normalized text content, used for de-duplication. */
-    sourceHash: string;
-    /** Original crawl depth, carried through for traceability. */
-    depth: number;
+  url: string;
+  title: string;
+  headings: Heading[];
+  textBlocks: ContentBlock[];
+  cleanedAt: string;      // ISO-8601
+  sourceHash: string;     // SHA-256 of normalized content
+  depth: number;
 }
 
-/** A retrieval-ready chunk produced by chunk.ts. */
+// ---------------------------------------------------------------------------
+// Stage 3: Retrieval-ready chunk
+// Aligned with the embed.ts contract. Do not rename without updating embed.ts.
+// ---------------------------------------------------------------------------
+
+export type ChunkContentType = 'paragraph' | 'list' | 'table' | 'faq' | 'policy' | 'contact';
+
 export interface Chunk {
-    id: string;
-    pageUrl: string;
-    pageTitle: string;
-    content: string;
-    headingPath: string[];
-    chunkIndex: number;
-    chunkCount: number;
-    tokenCount: number;
-    metadata: {
-        sourceHash: string;
-        createdAt: string;
-        [key: string]: unknown;
-    };
+  /** UUID v4, unique per chunk */
+  chunk_id: string;
+
+  /** Stable hash of the source URL — groups chunks by page */
+  doc_id: string;
+
+  /** The chunk content, with heading path prepended for retrieval context */
+  text: string;
+
+  /** Token count using gpt-tokenizer or equivalent */
+  token_count: number;
+
+  /** Source page URL — every chunk must trace to exactly one URL */
+  source_url: string;
+
+  /** Page title from <title> or first H1 */
+  page_title: string;
+
+  /** The nearest heading above this chunk */
+  section_heading: string;
+
+  /** Full heading path, e.g. ["Admissions","Scholarships","Merit-Based"] */
+  heading_path: string[];
+
+  /** Dominant content type — drives filtering and display */
+  content_type: ChunkContentType;
+
+  /** When the source page was crawled */
+  crawled_at: string;
+
+  /** ISO 639-1 language code */
+  language: string;
+
+  /** True if content looks like boilerplate (nav, contact-us stubs) */
+  is_boilerplate: boolean;
+
+  /** Position of this chunk within its source page (0-indexed) */
+  chunk_index: number;
+
+  /** Total chunks produced from the source page */
+  chunk_count: number;
+
+  /** SHA-256 of the cleaned page's content — used for update detection */
+  source_hash: string;
 }

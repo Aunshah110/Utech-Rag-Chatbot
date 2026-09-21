@@ -5,3 +5,4 @@ data/cleaned/
 data/chunks/
 *.log
 .env
+.env.local
