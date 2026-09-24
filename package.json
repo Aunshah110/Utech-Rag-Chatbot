@@ -4,27 +4,45 @@
   "description": "Crawl -> Clean -> Chunk ingestion pipeline for a university RAG chatbot",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc",
     "typecheck": "tsc --noEmit",
-    "crawl": "ts-node scripts/crawl.ts",
-    "clean": "ts-node scripts/clean.ts",
-    "chunk": "ts-node scripts/chunk.ts",
-    "embed": "ts-node scripts/embed.ts",
-    "index": "ts-node scripts/index.ts"
+    "crawl": "tsx scripts/crawl.ts",
+    "clean": "tsx scripts/clean.ts",
+    "chunk": "tsx scripts/chunk.ts",
+    "embed": "tsx scripts/embed.ts",
+    "index": "tsx scripts/index.ts",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
   },
   "dependencies": {
+    "@ai-sdk/cohere": "^4.0.48",
+    "@ai-sdk/react": "^4.0.117",
     "@upstash/vector": "^1.2.3",
+    "ai": "^7.0.114",
     "axios": "^1.20.0",
     "cheerio": "^1.2.0",
     "cohere-ai": "^8.1.0",
     "dotenv": "^18.0.2",
+    "groq-sdk": "^1.6.0",
     "js-tiktoken": "^1.0.15",
+    "next": "^16.3.6",
     "openai": "^7.20.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1",
     "zod": "^3.24.1"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
     "@types/node": "^22.20.4",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "autoprefixer": "^10.6.1",
+    "postcss": "^8.5.28",
+    "tailwindcss": "^4.3.3",
     "ts-node": "^10.9.2",
+    "tsx": "^4.23.15",
     "typescript": "^5.9.3"
   }
 }

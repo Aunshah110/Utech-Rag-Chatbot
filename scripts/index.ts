@@ -8,9 +8,9 @@ loadEnv({ path: '.env.local' });
 import { existsSync, createReadStream } from 'fs';
 import * as readline from 'readline';
 import { Index } from '@upstash/vector';
-import { createLogger } from './utils/logger';
-import { EmbedError, ConfigValidationError } from './utils/errors';
-import type { Chunk } from './types';
+import { createLogger } from '../lib/utils/logger';
+import { EmbedError, ConfigValidationError }  from '../lib/utils/errors';
+import type { Chunk } from '../lib/types';
 
 const log = createLogger('index');
 

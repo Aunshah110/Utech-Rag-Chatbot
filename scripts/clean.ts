@@ -7,9 +7,10 @@ import { z } from 'zod';
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'fs';
 import * as path from 'path';
 import { createHash } from 'crypto';
-import { CleanedPage, ContentBlock, ContentBlockType, Heading, RawPage } from './types';
-import { createLogger } from './utils/logger';
-import { CleanError, ConfigValidationError } from './utils/errors';
+import { CleanedPage, ContentBlock, ContentBlockType, Heading, RawPage } from '../lib/types';
+import { createLogger } from '../lib/utils/logger';
+import { CleanError, ConfigValidationError } from '../lib/utils/errors';
+
 
 const log = createLogger('clean');
 

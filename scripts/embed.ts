@@ -9,9 +9,9 @@ loadEnv({ path: '.env.local' });
 import { existsSync, writeFileSync, createReadStream } from 'fs';
 import * as readline from 'readline';
 import { CohereClient } from 'cohere-ai';
-import { createLogger } from './utils/logger';
-import { EmbedError, ConfigValidationError } from './utils/errors';
-import type { Chunk } from './types';
+import { createLogger } from '../lib/utils/logger';
+import { EmbedError, ConfigValidationError }  from '../lib/utils/errors';
+import type { Chunk } from '../lib/types';
 
 const log = createLogger('embed');
 

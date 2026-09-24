@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fdfcf9;         /* warm off-white */
+  --foreground: #1c1917;         /* stone-900 */
+  --brand: #92400e;              /* amber-800 */
+  --brand-light: #fef3c7;        /* amber-100 */
+  --brand-hover: #78350f;        /* amber-900 */
+  --border: #e7e5e4;             /* stone-200 */
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.chat-scroll::-webkit-scrollbar { width: 6px; }
+.chat-scroll::-webkit-scrollbar-track { background: transparent; }
+.chat-scroll::-webkit-scrollbar-thumb {
+  background: #d6d3d1;   /* stone-300 */
+  border-radius: 3px;
+}
+.chat-scroll::-webkit-scrollbar-thumb:hover { background: #a8a29e; }
+
+html { scrollbar-gutter: stable; }
+
+/* Chat markdown typography — tighter than default prose */
+.prose-chat {
+  font-size: 15px;
+  line-height: 1.6;
+}
+.prose-chat > *:first-child {
+  margin-top: 0;
+}
+.prose-chat > *:last-child {
+  margin-bottom: 0;
+}
+.prose-chat ul,
+.prose-chat ol {
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+.prose-chat li {
+  margin-top: 0.125rem;
+  margin-bottom: 0.125rem;
+}
+.prose-chat li > p {
+  margin: 0;
+  display: inline;
+}
+.prose-chat strong {
+  font-weight: 600;
+}
+.prose-chat code {
+  font-size: 0.875em;
+}

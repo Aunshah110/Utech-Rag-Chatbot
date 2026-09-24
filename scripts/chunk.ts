@@ -13,10 +13,12 @@ import { z } from 'zod';
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'fs';
 import * as path from 'path';
 import { createHash } from 'crypto';
-import { Chunk, ChunkContentType, CleanedPage, ContentBlock, ContentBlockType } from './types';
-import { createLogger } from './utils/logger';
-import { createTokenizer, Tokenizer } from './utils/tokenizer';
-import { ChunkError, ConfigValidationError } from './utils/errors';
+import { Chunk, ChunkContentType, CleanedPage, ContentBlock, ContentBlockType } from '../lib/types';
+import { createLogger } from '../lib/utils/logger';
+import { createTokenizer, Tokenizer } from '../lib/utils/tokenizer';
+import { ChunkError, ConfigValidationError } from '../lib/utils/errors';
+
+
 
 const log = createLogger('chunk');
 
