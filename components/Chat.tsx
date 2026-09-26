@@ -114,18 +114,18 @@ export function Chat() {
   const isEmpty = messages.length === 0;
 
   return (
-    <div className="flex h-screen flex-col bg-gradient-to-b from-stone-50 to-white">
+    <div className="flex h-screen flex-col bg-[var(--white)]">
       {/* Header */}
-      <header className="border-b border-slate-200 bg-white/80 backdrop-blur">
-        <div className="mx-auto flex max-w-3xl items-center justify-between gap-3 px-4 py-3">
+      <header className="mx-4 mt-4 rounded-2xl border border-[var(--brown-mid)] bg-[var(--brown-dark)] shadow-lg">
+        <div className="mx-auto flex max-w-3xl items-center justify-between gap-3 px-6 py-4">
           <div className="flex items-center gap-3">
             <LogoPlaceholder src="/uni_logo.png" size={40} />
             <div className="leading-tight">
-              <h1 className="text-base font-semibold text-slate-900">
+              <h1 className="text-base font-semibold text-[var(--cream)]">
                 BBS-UTECH Assistant
               </h1>
-              <p className="text-xs text-slate-500">
-                Grounded answers from the university&apos;s published info
+              <p className="text-xs text-[var(--cream)]">
+                Grounded answers from the <span>university&apos;s published info</span>
               </p>
             </div>
           </div>
@@ -136,7 +136,7 @@ export function Chat() {
               setMessages([]);
               sessionStorage.removeItem(STORAGE_KEY);
             }}
-            className="hidden sm:inline-flex items-center gap-1.5 rounded-lg border border-slate-200 px-3 py-1.5 text-xs font-medium text-slate-600 transition hover:border-slate-300 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-amber-500"
+            className="hidden sm:inline-flex items-center gap-1.5 btn-new-chat"
           >
             <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 5v14m-7-7h14" />
@@ -150,7 +150,12 @@ export function Chat() {
       <div ref={scrollRef} className="chat-scroll flex-1 overflow-y-auto">
         {isEmpty ? (
           <div className="flex h-full items-center justify-center py-12">
-            <SuggestedQueries onPick={handleSubmit} />
+            {/* The Center Square */}
+            <div className="card">
+              <div className="inner">
+                <SuggestedQueries onPick={handleSubmit} />
+              </div>
+            </div>
           </div>
         ) : (
           <div className="mx-auto max-w-3xl space-y-4 px-4 py-6">

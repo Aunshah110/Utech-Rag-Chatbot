@@ -13,14 +13,17 @@ interface Props {
 export function LogoPlaceholder({
   src = '/uni_logo.png',
   fallbackText = 'BBS',
-  size = 40,
+  size = 90,
 }: Props) {
   const [failed, setFailed] = useState(false);
+
+  // Common animation and circle styling
+  const baseClasses = "flex items-center justify-center transition-base hover:scale-140";
 
   if (failed || !src) {
     return (
       <div
-        className="flex items-center justify-center rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 text-white font-bold shadow-sm"
+        className={`${baseClasses} bg-[var(--brown-mid)] text-[var(--cream)] font-bold`}
         style={{ width: size, height: size, fontSize: size * 0.35 }}
         aria-label="University logo placeholder"
       >
@@ -36,7 +39,8 @@ export function LogoPlaceholder({
       alt="University logo"
       width={size}
       height={size}
-      className="rounded-lg object-contain"
+      // Added object-contain for proper scaling
+      className={`${baseClasses} object-contain`}
       onError={() => setFailed(true)}
     />
   );

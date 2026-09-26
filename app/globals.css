@@ -1,66 +1,252 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fdfcf9;         /* warm off-white */
-  --foreground: #1c1917;         /* stone-900 */
-  --brand: #92400e;              /* amber-800 */
-  --brand-light: #fef3c7;        /* amber-100 */
-  --brand-hover: #78350f;        /* amber-900 */
-  --border: #e7e5e4;             /* stone-200 */
+  --black: #421b05ef;
+  --white: #ffffff;
+  --footer-bg: var(--brown-dark);
+  --brown-dark: rgba(112, 62, 35, 0.9);
+  --brown-mid: #7a5230;
+  --brown-light: #d2a679;
+  --cream: #f5f5dc;
+  --yellow: #ffb627;
+  --glass: rgba(255, 255, 255, 0.06);
+  --card-bg: rgba(18, 14, 12, 0.72);
+  --accent: linear-gradient(90deg, #b07a49, #8b5a2b);
+  --transition: all 0.28s cubic-bezier(.2, .9, .3, 1);
 }
 
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   padding: 0;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  color: var(--black);
+  background: var(--white);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-.chat-scroll::-webkit-scrollbar { width: 6px; }
-.chat-scroll::-webkit-scrollbar-track { background: transparent; }
+/* --- New Utility Classes --- */
+
+/* Card */
+.card {
+  width: min(980px, 98%);
+  background: rgba(112, 62, 35, 0.9);
+  border-bottom: 4px solid var(--yellow);
+  border-radius: 16px;
+  padding: clamp(15px, 3.6vw, 34px);
+  box-shadow: 0 20px 40px rgba(15, 10, 8, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(8px);
+  /* margin-top: 60px; */
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 6px;
+  background: linear-gradient(90deg, rgba(231, 167, 39, 0.95), rgba(231, 167, 39, 0.95));
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  box-shadow: 0 6px 20px rgba(255, 210, 120, 0.06);
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  align-items: center;
+  width: 100%;
+}
+
+/* Smooth transitions for interactive elements */
+.transition-base {
+  transition: var(--transition);
+}
+
+/* --- Existing Scrollbar Logic (Updated Colors) --- */
+.chat-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
 .chat-scroll::-webkit-scrollbar-thumb {
-  background: #d6d3d1;   /* stone-300 */
+  background: var(--brown-mid);
   border-radius: 3px;
 }
-.chat-scroll::-webkit-scrollbar-thumb:hover { background: #a8a29e; }
 
-html { scrollbar-gutter: stable; }
+.chat-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--brown-light);
+}
 
-/* Chat markdown typography — tighter than default prose */
+html {
+  scrollbar-gutter: stable;
+}
+
+/* --- Existing Chat Markdown Typography (Untouched) --- */
 .prose-chat {
   font-size: 15px;
   line-height: 1.6;
 }
-.prose-chat > *:first-child {
+
+.prose-chat>*:first-child {
   margin-top: 0;
 }
-.prose-chat > *:last-child {
+
+.prose-chat>*:last-child {
   margin-bottom: 0;
 }
+
 .prose-chat ul,
 .prose-chat ol {
   margin-top: 0.25rem;
   margin-bottom: 0.5rem;
 }
+
 .prose-chat li {
   margin-top: 0.125rem;
   margin-bottom: 0.125rem;
 }
-.prose-chat li > p {
+
+.prose-chat li>p {
   margin: 0;
   display: inline;
 }
+
 .prose-chat strong {
   font-weight: 600;
 }
+
 .prose-chat code {
   font-size: 0.875em;
+}
+
+/* New Chat Button */
+.btn-new-chat {
+  background: linear-gradient(135deg, var(--gold, #ffb627), var(--brown-light));
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-weight: 600;
+  color: var(--brown-dark);
+  margin-left: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+
+.btn-new-chat:hover {
+  background: linear-gradient(135deg, var(--brown-light), var(--gold, #ffb627));
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.4);
+  transform: translateY(-2px);
+  color: var(--brown-dark);
+}
+
+.btn-new-chat:hover {
+  letter-spacing: 1.5px;
+}
+
+/* Suggested Queries Buttons */
+.buttons-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(12px, 1.6vw, 16px);
+  width: 100%;
+}
+
+.suggestion-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 18px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  font-size: clamp(0.75rem, 1.2vw, 0.95rem);
+  color: var(--black);
+  background: linear-gradient(180deg, var(--yellow), #f6c95a);
+  border: 2px solid rgba(0, 0, 0, 0.08);
+  box-shadow:
+    0 6px 18px rgba(122, 82, 48, 0.12),
+    0 2px 6px rgba(0, 0, 0, 0.35),
+    inset 0 -6px 24px rgba(0, 0, 0, 0.06);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.suggestion-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent);
+  transition: 0.5s;
+  z-index: 1;
+}
+
+.suggestion-btn::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 8px;
+  background: linear-gradient(180deg, var(--brown-mid), var(--brown-dark));
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+  transform: translateX(-6px);
+  transition: var(--transition);
+  opacity: 0.95;
+  z-index: 2;
+}
+
+.suggestion-btn span {
+  position: relative;
+  z-index: 3;
+}
+
+.suggestion-btn:hover {
+  transform: translateY(-6px) scale(1.03);
+  letter-spacing: 1.5px;
+  box-shadow:
+    0 18px 40px rgba(255, 210, 74, 0.25),
+    0 8px 18px rgba(0, 0, 0, 0.55),
+    inset 0 -8px 28px rgba(0, 0, 0, 0.08);
+}
+
+.suggestion-btn:hover::before {
+  transform: translateX(0);
+  width: 12px;
+}
+
+.suggestion-btn:hover::after {
+  left: 100%;
+}
+
+.suggestion-btn:active {
+  transform: translateY(-2px) scale(.995);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
 }
