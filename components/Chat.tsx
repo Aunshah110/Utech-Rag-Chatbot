@@ -159,11 +159,13 @@ export function Chat() {
           </div>
         ) : (
           <div className="mx-auto max-w-3xl space-y-4 px-4 py-6">
-            {messages.map((m) => (
-              <MessageBubble key={m.id} message={m} />
-            ))}
-            {/* FIX: only render while thinking */}
-            {showThinking && <ThinkingIndicator />}
+            {messages.map((m) => {
+  const isEmptyStreamingAI =
+    m.role === 'assistant' && m.isStreaming && !m.content;
+  if (isEmptyStreamingAI) return null;
+  return <MessageBubble key={m.id} message={m} />;
+})}
+{showThinking && <ThinkingIndicator />}
           </div>
         )}
       </div>

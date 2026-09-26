@@ -3,7 +3,7 @@
 :root {
   --black: #421b05ef;
   --white: #ffffff;
-  --footer-bg: var(--brown-dark);
+  --footer-bg: var(--white);
   --brown-dark: rgba(112, 62, 35, 0.9);
   --brown-mid: #7a5230;
   --brown-light: #d2a679;
