@@ -250,3 +250,137 @@ html {
   transform: translateY(-2px) scale(.995);
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
 }
+/* ═══════════════════════════════════════════════════════════════════════════
+   RESPONSIVE OVERRIDES
+   Mobile-first: defaults below target phones.
+   Existing rules above remain unchanged and apply at all sizes.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Base fix: prevent horizontal overflow on tiny screens ─────────────── */
+html,
+body {
+  overflow-x: hidden;
+}
+
+/* ── Card: add breathing room on phones ────────────────────────────────── */
+@media (max-width: 639px) {
+  .card {
+    width: min(980px, 94%);
+    padding: 16px 14px 20px;
+    border-radius: 14px;
+  }
+
+  .card::before {
+    height: 5px;
+    border-top-left-radius: 14px;
+    border-top-right-radius: 14px;
+  }
+
+  .inner {
+    gap: 1rem;
+  }
+}
+
+/* ── Suggested queries grid: 2-col → 1-col on phones ───────────────────── */
+@media (max-width: 639px) {
+  .buttons-container {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+
+/* Very small phones (iPhone SE 1st gen, older Androids) */
+@media (max-width: 360px) {
+  .card {
+    width: 96%;
+    padding: 14px 12px 18px;
+  }
+
+  .suggestion-btn {
+    padding: 11px 14px;
+    font-size: 0.72rem;
+    letter-spacing: 0.5px;
+    gap: 8px;
+  }
+
+  .suggestion-btn:hover {
+    transform: translateY(-3px) scale(1.01);
+    letter-spacing: 0.7px;
+  }
+}
+
+/* ── Tablet range: soften the hover lift slightly ──────────────────────── */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .buttons-container {
+    gap: 14px;
+  }
+
+  .suggestion-btn {
+    padding: 12px 16px;
+  }
+}
+
+/* ── New Chat button: icon-only on phones, full label on tablet+ ───────── */
+@media (max-width: 639px) {
+  .btn-new-chat {
+    margin-left: 0;
+    padding: 7px 9px;
+    gap: 0;
+    border-radius: 8px;
+    flex-shrink: 0;
+  }
+
+  .btn-new-chat .btn-new-chat-label {
+    display: none;
+  }
+
+  .btn-new-chat svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .btn-new-chat:hover {
+    letter-spacing: 0;
+    transform: translateY(-1px);
+  }
+}
+
+/* ── Header title / subtitle: shrink gracefully on phones ──────────────── */
+@media (max-width: 639px) {
+  header h1 {
+    font-size: 0.9rem;
+    line-height: 1.2;
+  }
+
+  header .header-subtitle {
+    font-size: 0.68rem;
+    line-height: 1.25;
+    opacity: 0.85;
+  }
+}
+
+/* Hide the subtitle on very small phones to keep the header on one row */
+@media (max-width: 400px) {
+  header .header-subtitle {
+    display: none;
+  }
+}
+/* ── Chat Input: safe-area + iOS zoom fix + compact placeholder ────────── */
+
+.chat-input-footer {
+  /* Respect the iPhone home indicator / notch */
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Prevent iOS Safari auto-zoom on input focus (font must be ≥ 16px) */
+.chat-input-textarea {
+  font-size: 16px;
+}
+
+/* On phones, shorten the placeholder visually */
+@media (max-width: 639px) {
+  .chat-input-textarea::placeholder {
+    font-size: 12px;
+    opacity: 0.85;
+  }
+}

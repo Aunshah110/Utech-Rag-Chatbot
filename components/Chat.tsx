@@ -117,32 +117,33 @@ export function Chat() {
     <div className="flex h-screen flex-col bg-[var(--white)]">
       {/* Header */}
       <header className="mx-4 mt-4 rounded-2xl border border-[var(--brown-mid)] bg-[var(--brown-dark)] shadow-lg">
-        <div className="mx-auto flex max-w-3xl items-center justify-between gap-3 px-6 py-4">
+        <div className="mx-auto flex max-w-3xl items-center justify-between gap-2 px-3 py-3 sm:gap-3 sm:px-6 sm:py-4">
           <div className="flex items-center gap-3">
             <LogoPlaceholder src="/uni_logo.png" size={40} />
             <div className="leading-tight">
               <h1 className="text-base font-semibold text-[var(--cream)]">
-                BBS-UTECH Assistant
+                BBSU-TECH Assistant
               </h1>
-              <p className="text-xs text-[var(--cream)]">
-                Grounded answers from the <span>university&apos;s published info</span>
-              </p>
+             <p className="header-subtitle text-xs text-[var(--cream)]">
+  Grounded answers from the <span>university&apos;s published info</span>
+</p>
             </div>
           </div>
 
-          <button
-            type="button"
-            onClick={() => {
-              setMessages([]);
-              sessionStorage.removeItem(STORAGE_KEY);
-            }}
-            className="hidden sm:inline-flex items-center gap-1.5 btn-new-chat"
-          >
-            <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M12 5v14m-7-7h14" />
-            </svg>
-            New chat
-          </button>
+         <button
+  type="button"
+  onClick={() => {
+    setMessages([]);
+    sessionStorage.removeItem(STORAGE_KEY);
+  }}
+  className="inline-flex items-center gap-1.5 btn-new-chat"
+  aria-label="New chat"
+>
+  <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M12 5v14m-7-7h14" />
+  </svg>
+  <span className="btn-new-chat-label">New chat</span>
+</button>
         </div>
       </header>
 
