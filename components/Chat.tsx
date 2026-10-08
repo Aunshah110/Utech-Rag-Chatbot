@@ -122,28 +122,28 @@ export function Chat() {
             <LogoPlaceholder src="/uni_logo.png" size={40} />
             <div className="leading-tight">
               <h1 className="text-base font-semibold text-[var(--cream)]">
-                BBSU-TECH Assistant
+                BBS-UTECH Assistant
               </h1>
-             <p className="header-subtitle text-xs text-[var(--cream)]">
-  Grounded answers from the <span>university&apos;s published info</span>
-</p>
+              <p className="header-subtitle text-xs text-[var(--cream)]">
+                Answers come directly from the <span>university&apos;s official information</span>
+              </p>
             </div>
           </div>
 
-         <button
-  type="button"
-  onClick={() => {
-    setMessages([]);
-    sessionStorage.removeItem(STORAGE_KEY);
-  }}
-  className="inline-flex items-center gap-1.5 btn-new-chat"
-  aria-label="New chat"
->
-  <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
-    <path strokeLinecap="round" strokeLinejoin="round" d="M12 5v14m-7-7h14" />
-  </svg>
-  <span className="btn-new-chat-label">New chat</span>
-</button>
+          <button
+            type="button"
+            onClick={() => {
+              setMessages([]);
+              sessionStorage.removeItem(STORAGE_KEY);
+            }}
+            className="inline-flex items-center gap-1.5 btn-new-chat"
+            aria-label="New chat"
+          >
+            <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 5v14m-7-7h14" />
+            </svg>
+            <span className="btn-new-chat-label">New chat</span>
+          </button>
         </div>
       </header>
 
@@ -161,12 +161,12 @@ export function Chat() {
         ) : (
           <div className="mx-auto max-w-3xl space-y-4 px-4 py-6">
             {messages.map((m) => {
-  const isEmptyStreamingAI =
-    m.role === 'assistant' && m.isStreaming && !m.content;
-  if (isEmptyStreamingAI) return null;
-  return <MessageBubble key={m.id} message={m} />;
-})}
-{showThinking && <ThinkingIndicator />}
+              const isEmptyStreamingAI =
+                m.role === 'assistant' && m.isStreaming && !m.content;
+              if (isEmptyStreamingAI) return null;
+              return <MessageBubble key={m.id} message={m} />;
+            })}
+            {showThinking && <ThinkingIndicator />}
           </div>
         )}
       </div>

@@ -5,10 +5,10 @@ interface Props {
 }
 
 const SUGGESTIONS = [
-  'What are the admission requirements for MS Civil Engineering?',
-  'Who teaches in the Computer Science department?',
-  'What programs does the university offer?',
-  'What is the fee structure for BS programs?',
+  'Admission',
+  'Fees',
+  'Scholarships ',
+  'Programs',
 ];
 
 // ─── Styles ───────────────────────────────────────────────────────────────────
@@ -167,12 +167,12 @@ export function SuggestedQueries({ onPick }: Props) {
         {/* Main slogan */}
         <h2
           className="sq-headline"
-          data-text="Ask Anything. Know Everything."
+          data-text="Your university questions, answered."
           onMouseMove={handleHeadlineMove}
           onMouseLeave={handleHeadlineLeave}
         >
           <span className="sq-headline-text">
-            Ask Anything. Know Everything.
+            Your university questions, answered.
           </span>
         </h2>
 
@@ -191,7 +191,7 @@ export function SuggestedQueries({ onPick }: Props) {
           letterSpacing: '0.3px',
         }}
       >
-        Try asking about…
+        FAQ’s
       </h3>
 
       {/* ── Suggestion Buttons ────────────────────────── */}
