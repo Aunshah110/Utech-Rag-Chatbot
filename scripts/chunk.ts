@@ -2,7 +2,7 @@
 // CLI wrapper — all logic lives in lib/pipeline/chunk.ts
 
 import { config as loadEnv } from 'dotenv';
-loadEnv({ path: '.env.local' });
+loadEnv({ path: '.env' });
 
 import { chunkAll } from '../lib/pipeline/chunk';
 import { createLogger } from '../lib/utils/logger';

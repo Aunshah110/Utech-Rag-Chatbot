@@ -5,7 +5,7 @@
 
 import { config as loadEnv } from 'dotenv';
 
-loadEnv({ path: '.env.local' });
+loadEnv({ path: '.env' });
 import { existsSync, writeFileSync, createReadStream } from 'fs';
 import * as readline from 'readline';
 import { CohereClient } from 'cohere-ai';

@@ -10,29 +10,25 @@ interface ChatMessage {
   content: string;
 }
 
-interface ChatRequest {
-  messages: ChatMessage[];
-}
-
 export async function POST(req: Request): Promise<Response> {
-  let body: ChatRequest;
+  let body: any;
   try {
     body = await req.json();
   } catch {
-    return new Response(
-      JSON.stringify({ error: 'Invalid JSON body' }),
-      { status: 400, headers: { 'Content-Type': 'application/json' } }
-    );
+    return new Response(JSON.stringify({ error: 'Invalid JSON body' }), {
+      status: 400,
+      headers: { 'Content-Type': 'application/json' },
+    });
   }
 
-  const messages = Array.isArray(body?.messages) ? body.messages : [];
+  const messages: ChatMessage[] = Array.isArray(body?.messages) ? body.messages : [];
   const lastUser = [...messages].reverse().find((m) => m.role === 'user');
 
   if (!lastUser || typeof lastUser.content !== 'string' || !lastUser.content.trim()) {
-    return new Response(
-      JSON.stringify({ error: 'No user message provided' }),
-      { status: 400, headers: { 'Content-Type': 'application/json' } }
-    );
+    return new Response(JSON.stringify({ error: 'No user message provided' }), {
+      status: 400,
+      headers: { 'Content-Type': 'application/json' },
+    });
   }
 
   const query = lastUser.content.trim();
@@ -41,8 +37,7 @@ export async function POST(req: Request): Promise<Response> {
   const stream = new ReadableStream({
     async start(controller) {
       const send = (event: string, data: unknown) => {
-        const payload = `event: ${event}\ndata: ${JSON.stringify(data)}\n\n`;
-        controller.enqueue(encoder.encode(payload));
+        controller.enqueue(encoder.encode(`event: ${event}\ndata: ${JSON.stringify(data)}\n\n`));
       };
 
       try {
@@ -54,16 +49,7 @@ export async function POST(req: Request): Promise<Response> {
           diagnostics: retrieval.diagnostics,
         });
 
-        if (!retrieval.confident) {
-          const refusal =
-            "I don't have enough information about that in the university's published materials.";
-          send('text', { delta: refusal });
-          send('sources', { sources: [] });
-          send('done', {});
-          controller.close();
-          return;
-        }
-
+        // Always stream — the model decides how to respond
         const sources = await streamAnswer(query, retrieval, (delta) => {
           send('text', { delta });
         });
