@@ -1,8 +1,9 @@
 node_modules/
 .next/
 dist/
-data/raw/
-data/cleaned/
-data/chunks/
 *.log
 .env
+data/*
+!data/state/
+!data/state/**
+

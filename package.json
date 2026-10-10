@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Crawl -> Clean -> Chunk ingestion pipeline for a university RAG chatbot",
   "main": "dist/index.js",
+  "backfill": "tsx scripts/backfill.ts",
   "scripts": {
     "typecheck": "tsc --noEmit",
     "crawl": "tsx scripts/crawl.ts",
@@ -10,7 +11,7 @@
     "chunk": "tsx scripts/chunk.ts",
     "embed": "tsx scripts/embed.ts",
     "index": "tsx scripts/index.ts",
-    "dev":   "next dev",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start"
   },
