@@ -1,35 +1,53 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
 
 interface Props {
   onSubmit: (query: string) => void;
-  disabled?: boolean;
   isStreaming?: boolean;
   onCancel?: () => void;
+  placeholder?: string;
+  footerNote?: string;
+  sendLabel?: string;
+  stopLabel?: string;
 }
 
-export function ChatInput({ onSubmit, disabled, isStreaming, onCancel }: Props) {
-  const [value, setValue] = useState('');
-  const ref = useRef<HTMLTextAreaElement>(null);
+export interface ChatInputHandle {
+  focus: () => void;
+}
 
-  // Auto-resize up to a max height
+export const ChatInput = forwardRef<ChatInputHandle, Props>(function ChatInput(
+  { onSubmit, isStreaming, onCancel, placeholder, footerNote, sendLabel, stopLabel },
+  ref
+) {
+  const [value, setValue] = useState('');
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  // Auto-resize
   useEffect(() => {
-    const el = ref.current;
+    const el = textareaRef.current;
     if (!el) return;
     el.style.height = 'auto';
     el.style.height = Math.min(el.scrollHeight, 180) + 'px';
   }, [value]);
 
+  // Expose focus to parent
+  useImperativeHandle(ref, () => ({
+    focus: () => textareaRef.current?.focus(),
+  }), []);
+
+  // Keep focus always — even after send, even during streaming
   useEffect(() => {
-    ref.current?.focus();
+    textareaRef.current?.focus();
   }, []);
 
   const submit = () => {
     const q = value.trim();
-    if (!q || disabled) return;
+    if (!q) return;
     onSubmit(q);
     setValue('');
+    // Refocus after clear (the browser sometimes blurs on value='')
+    requestAnimationFrame(() => textareaRef.current?.focus());
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
@@ -39,56 +57,49 @@ export function ChatInput({ onSubmit, disabled, isStreaming, onCancel }: Props) 
     }
   };
 
-    return (
-    <div className="chat-input-footer w-full border-t border-[var(--brown-mid)] bg-[var(--footer-bg)]">
-      <div className="mx-auto max-w-3xl px-3 py-2.5 sm:px-4 sm:py-3">
-        {/* The input box inside the footer */}
-        <div className="relative flex items-end gap-2 rounded-2xl border border-[var(--yellow)] bg-white p-2 shadow-sm transition-base focus-within:border-[var(--yellow)] focus-within:ring-2 focus-within:ring-[var(--yellow)]/80">
-
-          {/* Search Icon */}
-          <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center text-[var(--brown-mid)] sm:h-10 sm:w-10">
-            <svg className="h-4 w-4 sm:h-5 sm:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
-          </div>
-
+  return (
+    <div className="chat-input-footer border-t border-stone-200/60 bg-white/60 backdrop-blur-xl">
+      <div className="mx-auto max-w-3xl px-3 sm:px-4 py-3">
+        <div className="glass-input relative flex items-end gap-2 p-2">
           <textarea
-            ref={ref}
+            ref={textareaRef}
             value={value}
             onChange={(e) => setValue(e.target.value)}
             onKeyDown={handleKeyDown}
-            disabled={disabled}
             rows={1}
-            placeholder="Ask about admissions, programs, faculty..."
-            className="chat-input-textarea flex-1 resize-none bg-transparent px-2 py-2 text-[15px] text-black placeholder:text-[var(--brown-mid)] focus:outline-none disabled:opacity-50 sm:text-[15px]"
+            placeholder={placeholder ?? 'Ask about admissions, programs, faculty...'}
+            className="chat-input-textarea flex-1 resize-none bg-transparent px-2 py-2 text-[15px] text-stone-800 placeholder:text-stone-400 focus:outline-none"
           />
 
           {isStreaming ? (
             <button
               type="button"
               onClick={onCancel}
-              className="flex h-9 w-9 flex-shrink-0 cursor-pointer items-center justify-center rounded-full bg-[var(--brown-mid)] text-[var(--cream)] transition-base hover:bg-[var(--brown-dark)] focus:outline-none focus:ring-2 focus:ring-[var(--brown-light)]"
-              aria-label="Stop generating"
+              aria-label={stopLabel ?? 'Stop generating'}
+              className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-stone-800 text-white transition hover:bg-stone-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-stone-400"
             >
-              <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
-                <rect x="6" y="6" width="12" height="12" rx="1" />
+              <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+                <rect x="6" y="6" width="12" height="12" rx="1.5" />
               </svg>
             </button>
           ) : (
             <button
               type="button"
               onClick={submit}
-              disabled={!value.trim() || disabled}
-              className="flex h-9 w-9 flex-shrink-0 cursor-pointer items-center justify-center rounded-full bg-[var(--brown-mid)] text-[var(--cream)] transition-base hover:bg-[var(--brown-dark)] disabled:cursor-not-allowed disabled:bg-[var(--brown-light)]/50 focus:outline-none focus:ring-2 focus:ring-[var(--brown-light)]"
-              aria-label="Send message"
+              disabled={!value.trim()}
+              aria-label={sendLabel ?? 'Send message'}
+              className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-amber-700 text-white transition hover:bg-amber-800 disabled:cursor-not-allowed disabled:bg-stone-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
             >
-              <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}>
+              <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} aria-hidden>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14m0 0l-6-6m6 6l-6 6" />
               </svg>
             </button>
           )}
         </div>
+        {footerNote && (
+          <p className="mt-2 text-center text-xs text-stone-400">{footerNote}</p>
+        )}
       </div>
     </div>
   );
-}
+});

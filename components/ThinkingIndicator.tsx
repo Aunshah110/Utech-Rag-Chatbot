@@ -1,75 +1,9 @@
 'use client';
 
-// ─── Styles ──────────────────────────────────────────────────────────────────
-const STYLES = `
-  @keyframes ti-wave {
-    0%, 60%, 100% { transform: translateY(0);    opacity: 0.35; }
-    30%            { transform: translateY(-7px); opacity: 1;    }
-  }
-  @keyframes ti-glow-pulse {
-    0%, 100% { box-shadow: 0 4px 16px rgba(122,82,48,0.09), inset 0 1px 0 rgba(255,255,255,0.75); }
-    50%       { box-shadow: 0 4px 24px rgba(255,182,39,0.18), inset 0 1px 0 rgba(255,255,255,0.75); }
-  }
-  @keyframes ti-fade-in {
-    from { opacity: 0; transform: translateY(10px); }
-    to   { opacity: 1; transform: translateY(0);    }
-  }
-  @keyframes ti-text-fade {
-    0%, 100% { opacity: 0.5; }
-    50%       { opacity: 1;   }
-  }
-  .ti-wrapper {
-    display: flex;
-    align-items: flex-end;
-    gap: 10px;
-    animation: ti-fade-in 0.32s cubic-bezier(.2,.9,.3,1) both;
-  }
-  .ti-avatar {
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #7a5230 0%, rgba(112,62,35,0.9) 100%);
-    box-shadow: 0 2px 10px rgba(112,62,35,0.38), inset 0 1px 0 rgba(255,255,255,0.15);
-    color: #f5f5dc;
-  }
-  .ti-bubble {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    padding: 11px 16px;
-    border-radius: 18px 18px 18px 4px;
-    background: rgba(255,251,245,0.97);
-    border: 1px solid rgba(122,82,48,0.17);
-    backdrop-filter: blur(6px);
-    animation: ti-glow-pulse 2.2s ease-in-out infinite;
-  }
-  .ti-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #ffb627, #7a5230);
-    box-shadow: 0 2px 5px rgba(255,182,39,0.4);
-    animation: ti-wave 1.5s ease-in-out infinite;
-  }
-  .ti-label {
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.3px;
-    color: #7a5230;
-    animation: ti-text-fade 1.5s ease-in-out infinite;
-    margin-left: 2px;
-  }
-`;
-
 // ─── Component ────────────────────────────────────────────────────────────────
 export function ThinkingIndicator() {
   return (
     <>
-      <style>{STYLES}</style>
 
       <div className="ti-wrapper">
         {/* AI Avatar */}

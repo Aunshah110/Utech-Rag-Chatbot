@@ -3,16 +3,15 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { ChatMessage } from '@/types/chat';
 import { useChatStream } from '@/lib/hooks/useChatWithSources';
+import { useLanguage } from '@/lib/i18n/LanguageContext';
 import { MessageBubble } from './MessageBubble';
 import { ThinkingIndicator } from './ThinkingIndicator';
 import { SuggestedQueries } from './SuggestedQueries';
-import { ChatInput } from './ChatInput';
+import { ChatInput, ChatInputHandle } from './ChatInput';
 import { LogoPlaceholder } from './LogoPlaceholder';
+import { LanguageSelector } from './LanguageSelector';
 
 const STORAGE_KEY = 'bbs-utech-chat-history-v1';
-
-// Minimum time (ms) to show the thinking indicator, even if the answer
-// arrives faster. Prevents a jarring flash-and-vanish.
 const MIN_THINKING_MS = 600;
 
 function newId(prefix: string): string {
@@ -25,33 +24,35 @@ export function Chat() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const thinkingStartRef = useRef<number>(0);
 
-  // Restore session history
+  const { language, setLanguage, t } = useLanguage();
+  const { send, cancel, isStreaming } = useChatStream();
+  
+  // Inside Chat component:
+  const chatInputRef = useRef<ChatInputHandle>(null);
+
+  // After sending, ensure input stays focused:
+  useEffect(() => {
+    chatInputRef.current?.focus();
+  }, [messages.length]);
+
   useEffect(() => {
     try {
       const raw = sessionStorage.getItem(STORAGE_KEY);
       if (raw) setMessages(JSON.parse(raw));
-    } catch {
-      /* ignore */
-    }
+    } catch { /* ignore */ }
   }, []);
 
-  // Persist on change
   useEffect(() => {
     try {
       sessionStorage.setItem(STORAGE_KEY, JSON.stringify(messages));
-    } catch {
-      /* ignore */
-    }
+    } catch { /* ignore */ }
   }, [messages]);
 
-  // Auto-scroll on new content
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
     el.scrollTo({ top: el.scrollHeight, behavior: 'smooth' });
   }, [messages, showThinking]);
-
-  const { send, cancel, isStreaming } = useChatStream();
 
   const updateMessage = useCallback((updated: ChatMessage) => {
     setMessages((prev) => {
@@ -73,97 +74,104 @@ export function Chat() {
       };
       setMessages((prev) => [...prev, userMsg]);
 
-      // FIX: record when we started thinking
       thinkingStartRef.current = Date.now();
       setShowThinking(true);
 
-      // FIX: use a flag + helper so we always wait MIN_THINKING_MS
       let hidden = false;
       const hideAfterMinimum = () => {
         if (hidden) return;
         hidden = true;
         const elapsed = Date.now() - thinkingStartRef.current;
         const remaining = Math.max(0, MIN_THINKING_MS - elapsed);
-        if (remaining === 0) {
-          setShowThinking(false);
-        } else {
-          setTimeout(() => setShowThinking(false), remaining);
-        }
+        if (remaining === 0) setShowThinking(false);
+        else setTimeout(() => setShowThinking(false), remaining);
       };
 
       let firstDelta = true;
 
       try {
-        await send(query, history, (delta) => {
+        await send(query, history, language, (delta) => {
           if (firstDelta && delta.content.length > 0) {
             firstDelta = false;
-            // FIX: don't immediately hide — respect MIN_THINKING_MS
             hideAfterMinimum();
           }
           updateMessage(delta);
         });
       } finally {
-        // FIX: always ensure the indicator is dismissed when streaming ends,
-        // even if the stream errored or produced no tokens.
         hideAfterMinimum();
       }
     },
-    [messages, send, updateMessage]
+    [messages, send, updateMessage, language]
   );
+
+  const handleNewChat = () => {
+    setMessages([]);
+    try { sessionStorage.removeItem(STORAGE_KEY); } catch { /* ignore */ }
+  };
 
   const isEmpty = messages.length === 0;
 
   return (
-    <div className="flex h-screen flex-col bg-[var(--white)]">
-      {/* Header */}
-      <header className="mx-4 mt-4 rounded-2xl border border-[var(--brown-mid)] bg-[var(--brown-dark)] shadow-lg">
-        <div className="mx-auto flex max-w-3xl items-center justify-between gap-2 px-3 py-3 sm:gap-3 sm:px-6 sm:py-4">
-          <div className="flex items-center gap-3">
-            <LogoPlaceholder src="/uni_logo.png" size={40} />
-            <div className="leading-tight">
-              <h1 className="text-base font-semibold text-[var(--cream)]">
-                BBS-UTECH Assistant
+    <div className="chat-shell flex h-[100dvh] flex-col">
+      {/* ── Header ────────────────────────────────────────────────────── */}
+      <header className="glass-header sticky top-0 z-10">
+        <div className="mx-auto flex max-w-3xl items-center justify-between gap-2 px-3 pt-[max(0.75rem,env(safe-area-inset-top))] pb-3 sm:px-4 sm:py-3">
+          {/* Left: logo + title */}
+          <div className="flex min-w-0 items-center gap-2 sm:gap-3">
+            <LogoPlaceholder src="/uni_logo.png" size={36} />
+            <div className="min-w-0 leading-tight">
+              <h1 className="truncate text-sm sm:text-base font-semibold text-stone-900">
+                {t.appTitle}
               </h1>
-              <p className="header-subtitle text-xs text-[var(--cream)]">
-                Answers come directly from the <span>university&apos;s official information</span>
+              <p className="hidden truncate text-[11px] text-stone-500 min-[400px]:block sm:text-xs">
+                {t.appSubtitle}
               </p>
             </div>
           </div>
 
-          <button
-            type="button"
-            onClick={() => {
-              setMessages([]);
-              sessionStorage.removeItem(STORAGE_KEY);
-            }}
-            className="inline-flex items-center gap-1.5 btn-new-chat"
-            aria-label="New chat"
-          >
-            <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M12 5v14m-7-7h14" />
-            </svg>
-            <span className="btn-new-chat-label">New chat</span>
-          </button>
+          {/* Right: language + new chat */}
+          <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
+            <LanguageSelector
+              value={language}
+              onChange={setLanguage}
+              label={t.language}
+            />
+            <button
+              type="button"
+              onClick={handleNewChat}
+              aria-label={t.newChat}
+              className="inline-flex h-8 items-center gap-1.5 rounded-lg border border-stone-200 bg-white px-2.5 text-xs font-medium text-stone-600 transition hover:border-amber-400 hover:bg-amber-50 hover:text-amber-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 sm:px-3"
+            >
+              <svg
+                className="h-3.5 w-3.5"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2}
+                aria-hidden
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 5v14m-7-7h14" />
+              </svg>
+              <span className="hidden md:inline">{t.newChat}</span>
+            </button>
+          </div>
         </div>
       </header>
 
-      {/* Messages */}
+      {/* ── Messages ──────────────────────────────────────────────────── */}
       <div ref={scrollRef} className="chat-scroll flex-1 overflow-y-auto">
         {isEmpty ? (
-          <div className="flex h-full items-center justify-center py-12">
-            {/* The Center Square */}
-            <div className="card">
-              <div className="inner">
-                <SuggestedQueries onPick={handleSubmit} />
-              </div>
-            </div>
+          <div className="flex h-full items-center justify-center px-4 py-12">
+            <SuggestedQueries onPick={handleSubmit} />
           </div>
         ) : (
-          <div className="mx-auto max-w-3xl space-y-4 px-4 py-6">
+          <div className="mx-auto max-w-3xl space-y-4 px-3 sm:px-4 py-5 sm:py-6">
             {messages.map((m) => {
-              const isEmptyStreamingAI =
-                m.role === 'assistant' && m.isStreaming && !m.content;
-              if (isEmptyStreamingAI) return null;
+              // Skip rendering empty streaming assistant messages — the
+              // ThinkingIndicator covers that state.
+              if (m.role === 'assistant' && m.isStreaming && m.content.length === 0) {
+                return null;
+              }
               return <MessageBubble key={m.id} message={m} />;
             })}
             {showThinking && <ThinkingIndicator />}
@@ -171,12 +179,16 @@ export function Chat() {
         )}
       </div>
 
-      {/* Input */}
+      {/* ── Input ─────────────────────────────────────────────────────── */}
       <ChatInput
+        ref={chatInputRef}
         onSubmit={handleSubmit}
-        disabled={isStreaming}
         isStreaming={isStreaming}
         onCancel={cancel}
+        placeholder={t.placeholder}
+        footerNote={t.footerNote}
+        sendLabel={t.sendLabel}
+        stopLabel={t.stopLabel}
       />
     </div>
   );
