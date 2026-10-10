@@ -1,4 +1,4 @@
-// scripts/retrieve.ts
+// lib/rag/retrieve.ts
 
 import { config as loadEnv } from 'dotenv';
 loadEnv({ path: '.env.local' });
@@ -7,8 +7,7 @@ import { CohereClient } from 'cohere-ai';
 import { Index } from '@upstash/vector';
 import { createLogger } from '../utils/logger';
 import { ConfigValidationError } from '../utils/errors';
-
-
+import { STATIC_FACTS, StaticFact } from './static-facts';
 
 const log = createLogger('retrieve');
 
@@ -17,19 +16,12 @@ const log = createLogger('retrieve');
 // ---------------------------------------------------------------------------
 
 interface RetrieveConfig {
-  /** Top-K from vector search before reranking */
   retrieveTopK: number;
-  /** Top-N after reranking */
   rerankTopN: number;
-  /** Minimum vector similarity score to proceed (0-1) */
   minVectorScore: number;
-  /** Minimum rerank score to keep a chunk (0-1) */
   minRerankScore: number;
-  /** Cohere embed model */
   embedModel: string;
-  /** Cohere rerank model */
   rerankModel: string;
-  /** Namespace in Upstash Vector (empty = default) */
   namespace: string;
 }
 
@@ -37,7 +29,7 @@ const CONFIG: RetrieveConfig = {
   retrieveTopK: 15,
   rerankTopN: 5,
   minVectorScore: 0.45,
-  minRerankScore: 0.25,
+  minRerankScore: 0.15,
   embedModel: 'embed-english-v3.0',
   rerankModel: 'rerank-v3.5',
   namespace: '',
@@ -56,20 +48,14 @@ export interface RetrievedChunk {
   heading_path: string;
   content_type: string;
   token_count: number;
-  /** Vector similarity score from Upstash (0-1) */
   vector_score: number;
-  /** Rerank relevance score from Cohere (0-1), undefined if rerank skipped */
   rerank_score?: number;
 }
 
 export interface RetrievalResult {
-  /** Whether the pipeline found sufficient evidence */
   confident: boolean;
-  /** Reason if not confident — surfaced to the user/generator */
   reason?: 'no_results' | 'low_vector_score' | 'low_rerank_score' | 'error';
-  /** Final chunks, sorted by relevance. Empty if not confident. */
   chunks: RetrievedChunk[];
-  /** Diagnostics for logging/eval */
   diagnostics: {
     vector_top_score: number;
     rerank_top_score: number | null;
@@ -78,6 +64,56 @@ export interface RetrievalResult {
     elapsed_ms: number;
   };
 }
+
+// ---------------------------------------------------------------------------
+// Static fact matching
+// ---------------------------------------------------------------------------
+
+/**
+ * Detects whether the query matches any static fact triggers.
+ * Applies priority-based suppression: within each group, only the
+ * highest-priority matching fact is kept.
+ *
+ * Examples:
+ *   "who is syed aun"        → developer-syed-aun only (priority 10)
+ *   "who developed this"     → developer-team only (priority 5)
+ *   "who is abbas"           → developer-abbas only (priority 10)
+ *   "what is your tech stack"→ project-info only
+ */
+function matchStaticFacts(query: string): StaticFact[] {
+  const q = query.toLowerCase();
+
+  const matched = STATIC_FACTS.filter((fact) =>
+    fact.triggers.some((trigger) => {
+      const t = trigger.toLowerCase();
+      if (t.includes(' ')) return q.includes(t);
+      return new RegExp(
+        `\\b${t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`,
+        'i'
+      ).test(q);
+    })
+  );
+
+  if (matched.length === 0) return [];
+
+  // Group and find the max priority within each group.
+  const maxPriorityByGroup = new Map<string, number>();
+  for (const fact of matched) {
+    const group = fact.group ?? `solo-${fact.id}`;
+    const p = fact.priority ?? 0;
+    const current = maxPriorityByGroup.get(group);
+    if (current === undefined || p > current) {
+      maxPriorityByGroup.set(group, p);
+    }
+  }
+
+  // Keep only facts at the group's max priority.
+  return matched.filter((fact) => {
+    const group = fact.group ?? `solo-${fact.id}`;
+    return (fact.priority ?? 0) === maxPriorityByGroup.get(group);
+  });
+}
+
 
 // ---------------------------------------------------------------------------
 // Cohere client
@@ -91,22 +127,11 @@ function createCohereClient(): CohereClient {
   return new CohereClient({ token: apiKey });
 }
 
-/**
- * Embed a user query using input_type="search_query".
- *
- * CRITICAL: This is NOT the same input_type used for documents.
- * Cohere's v3 models are asymmetric — they produce different embeddings
- * for the same text depending on whether it's a document or a query.
- * Using the wrong input_type silently degrades retrieval quality. [citation:1][citation:19]
- */
-async function embedQuery(
-  client: CohereClient,
-  query: string
-): Promise<number[]> {
+async function embedQuery(client: CohereClient, query: string): Promise<number[]> {
   const response = await client.embed({
     model: CONFIG.embedModel,
     texts: [query],
-    inputType: 'search_query',   // ← MANDATORY for v3 models
+    inputType: 'search_query',
     embeddingTypes: ['float'],
   });
 
@@ -133,12 +158,6 @@ function createUpstashIndex(): Index {
   return new Index({ url, token });
 }
 
-/**
- * Query Upstash Vector with a pre-computed query embedding.
- *
- * Upstash returns scores normalized to 0-1 (1 = most similar) regardless
- * of the underlying distance metric. [citation:3][citation:15]
- */
 async function vectorSearch(
   index: Index,
   queryVector: number[],
@@ -147,8 +166,8 @@ async function vectorSearch(
   const results = await index.query({
     vector: queryVector,
     topK,
-    includeMetadata: true,   // We need text, source_url, etc.
-    includeVectors: false,   // Don't return 1024 floats — waste of bandwidth
+    includeMetadata: true,
+    includeVectors: false,
   });
 
   return results.map((r) => {
@@ -171,16 +190,6 @@ async function vectorSearch(
 // Reranking
 // ---------------------------------------------------------------------------
 
-/**
- * Rerank candidate chunks using Cohere Rerank 3.5.
- *
- * Rerank is a cross-encoder: it scores each (query, document) pair
- * directly, which is far more accurate than cosine similarity alone.
- * Typical effect: top-5 precision improves 10-25%. [citation:2][citation:4]
- *
- * Cost: ~$0.30 per 10,000 documents reranked. For 15 docs/query, that's
- * roughly $0.00045 per user message — negligible. [citation:14]
- */
 async function rerankChunks(
   client: CohereClient,
   query: string,
@@ -212,8 +221,6 @@ async function rerankChunks(
 
     return reranked;
   } catch (err: any) {
-    // Rerank failure must NOT fail the whole request. Fall back to
-    // vector-ranked order. This is a deliberate degradation, not a bug.
     log.warn('Rerank failed, falling back to vector ranking', {
       error: err?.message ?? String(err),
     });
@@ -222,15 +229,48 @@ async function rerankChunks(
 }
 
 // ---------------------------------------------------------------------------
+// Query expansion
+// ---------------------------------------------------------------------------
+
+function expandQuery(query: string): string {
+  const words = query.trim().split(/\s+/);
+  const q = query.toLowerCase();
+
+  if (words.length > 5) return query;
+
+  const domains: Array<{ pattern: RegExp; expansion: string }> = [
+    { pattern: /apply|application|admission|enroll/i, expansion: 'admission application online apply process how to bbsutsd' },
+    { pattern: /fee|tuition|cost|payment/i,          expansion: 'fee structure tuition payment bbsutsd university' },
+    { pattern: /faculty|teacher|prof|staff|lecturer/i, expansion: 'faculty department teacher professor bbsutsd university' },
+    { pattern: /program|course|degree|major|curriculum/i, expansion: 'program degree course curriculum bbsutsd university' },
+    { pattern: /hostel|transport|sport|library|lab|facility/i, expansion: 'facilities hostel transport library labs bbsutsd university' },
+    { pattern: /contact|email|phone|address|location/i, expansion: 'contact email phone address location bbsutsd university' },
+    { pattern: /scholarship|financial.?aid|stipend/i, expansion: 'scholarship financial aid bbsutsd university' },
+    { pattern: /exam|result|grade|marks|gpa/i,        expansion: 'examination result grades bbsutsd university' },
+    { pattern: /vision|mission|history|introduction/i, expansion: 'about vision mission history bbsutsd university' },
+  ];
+
+  for (const { pattern, expansion } of domains) {
+    if (pattern.test(q)) {
+      const expanded = `${query} ${expansion}`;
+      log.debug('Query expanded', { original: query, expanded });
+      return expanded;
+    }
+  }
+
+  if (words.length <= 2) {
+    const expanded = `${query} bbsutsd university`;
+    log.debug('Query expanded (generic)', { original: query, expanded });
+    return expanded;
+  }
+
+  return query;
+}
+
+// ---------------------------------------------------------------------------
 // Main retrieval pipeline
 // ---------------------------------------------------------------------------
 
-/**
- * Full retrieval pipeline: embed → search → gate → rerank → gate.
- *
- * Returns `confident: false` with a `reason` when evidence is insufficient.
- * The caller (generate.ts) MUST respect this and refuse to answer.
- */
 export async function retrieve(
   query: string,
   config: Partial<RetrieveConfig> = {}
@@ -246,7 +286,6 @@ export async function retrieve(
     elapsed_ms: 0,
   };
 
-  // Guard: reject empty or absurdly short queries
   const trimmed = query.trim();
   if (trimmed.length < 2) {
     return {
@@ -257,15 +296,49 @@ export async function retrieve(
     };
   }
 
+  // ── Stage 0: Static fact check (short-circuits vector search) ──────────
+  const staticMatches = matchStaticFacts(trimmed);
+  if (staticMatches.length > 0) {
+    log.info('Static fact match — bypassing vector search', {
+      query: trimmed.slice(0, 60),
+      facts: staticMatches.map((f) => f.id),
+    });
+
+    const staticChunks: RetrievedChunk[] = staticMatches.map((fact) => ({
+      chunk_id: `static-${fact.id}`,
+      text: fact.content,
+      source_url: fact.sourceUrl ?? '',
+      page_title: fact.sourceTitle ?? 'Internal project metadata',
+      section_heading: 'About',
+      heading_path: fact.sourceTitle ?? 'About',
+      content_type: 'paragraph',
+      token_count: Math.ceil(fact.content.length / 4),
+      vector_score: 1.0,
+      rerank_score: 1.0,
+    }));
+
+    return {
+      confident: true,
+      chunks: staticChunks,
+      diagnostics: {
+        vector_top_score: 1.0,
+        rerank_top_score: 1.0,
+        candidates_retrieved: staticChunks.length,
+        candidates_after_rerank: staticChunks.length,
+        elapsed_ms: Date.now() - startedAt,
+      },
+    };
+  }
+  // ── End static fact check ──────────────────────────────────────────────
+
   const cohere = createCohereClient();
   const upstash = createUpstashIndex();
 
-  // -------------------------------------------------------------------------
   // Stage 1: Embed query
-  // -------------------------------------------------------------------------
   let queryVector: number[];
   try {
-    queryVector = await embedQuery(cohere, trimmed);
+    const expandedQuery = expandQuery(trimmed);
+    queryVector = await embedQuery(cohere, expandedQuery);
   } catch (err: any) {
     log.error('Query embedding failed', { error: err?.message ?? String(err) });
     return {
@@ -276,9 +349,7 @@ export async function retrieve(
     };
   }
 
-  // -------------------------------------------------------------------------
   // Stage 2: Vector search
-  // -------------------------------------------------------------------------
   let candidates: RetrievedChunk[];
   try {
     candidates = await vectorSearch(upstash, queryVector, cfg.retrieveTopK);
@@ -303,9 +374,7 @@ export async function retrieve(
 
   const vectorTopScore = candidates[0].vector_score;
 
-  // -------------------------------------------------------------------------
-  // Stage 3: Confidence gate #1 (vector similarity)
-  // -------------------------------------------------------------------------
+  // Stage 3: Confidence gate #1
   if (vectorTopScore < cfg.minVectorScore) {
     log.info('Confidence gate: vector score below threshold', {
       vector_top_score: vectorTopScore,
@@ -325,19 +394,13 @@ export async function retrieve(
     };
   }
 
-  // -------------------------------------------------------------------------
   // Stage 4: Rerank
-  // -------------------------------------------------------------------------
   const reranked = await rerankChunks(cohere, trimmed, candidates);
   const rerankTopScore = reranked.length > 0 && reranked[0].rerank_score !== undefined
     ? reranked[0].rerank_score
     : null;
 
-  // -------------------------------------------------------------------------
-  // Stage 5: Confidence gate #2 (rerank relevance)
-  // -------------------------------------------------------------------------
-  // Only apply if we actually got rerank scores. If rerank fell back,
-  // trust the vector score gate that already passed.
+  // Stage 5: Confidence gate #2
   if (rerankTopScore !== null && rerankTopScore < cfg.minRerankScore) {
     log.info('Confidence gate: rerank score below threshold', {
       rerank_top_score: rerankTopScore,
@@ -357,16 +420,10 @@ export async function retrieve(
     };
   }
 
-  // -------------------------------------------------------------------------
   // Stage 6: Filter & return
-  // -------------------------------------------------------------------------
-  // Keep only chunks above the rerank floor. If rerank produced nothing
-  // above floor, take the top 3 vector-ranked as fallback.
   let finalChunks: RetrievedChunk[];
   if (rerankTopScore !== null) {
-    finalChunks = reranked.filter(
-      (c) => (c.rerank_score ?? 0) >= cfg.minRerankScore
-    );
+    finalChunks = reranked.filter((c) => (c.rerank_score ?? 0) >= cfg.minRerankScore);
   } else {
     finalChunks = candidates.slice(0, cfg.rerankTopN);
   }
@@ -398,14 +455,14 @@ export async function retrieve(
 }
 
 // ---------------------------------------------------------------------------
-// CLI entry (for testing)
+// CLI entry
 // ---------------------------------------------------------------------------
 
 if (require.main === module) {
   const query = process.argv.slice(2).join(' ').trim();
 
   if (!query) {
-    console.error('Usage: npx ts-node scripts/retrieve.ts "your question here"');
+    console.error('Usage: npx tsx lib/rag/retrieve.ts "your question here"');
     process.exit(1);
   }
 
@@ -425,7 +482,7 @@ if (require.main === module) {
 
       for (const [i, c] of result.chunks.entries()) {
         console.log(`\n[${i + 1}] vector=${c.vector_score.toFixed(3)} rerank=${c.rerank_score?.toFixed(3) ?? 'n/a'}`);
-        console.log('    source:', c.source_url);
+        console.log('    source:', c.source_url || '(static fact — no URL)');
         console.log('    heading:', c.heading_path || '(none)');
         console.log('    type:', c.content_type, '| tokens:', c.token_count);
         console.log('    text:', c.text.slice(0, 220).replace(/\n/g, ' '));

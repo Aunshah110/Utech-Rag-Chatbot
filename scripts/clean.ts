@@ -2,7 +2,7 @@
 // CLI wrapper — all logic lives in lib/pipeline/clean.ts
 
 import { config as loadEnv } from 'dotenv';
-loadEnv({ path: '.env.local' });
+loadEnv({ path: '.env' });
 
 import { cleanAll } from '../lib/pipeline/clean';
 import { createLogger } from '../lib/utils/logger';

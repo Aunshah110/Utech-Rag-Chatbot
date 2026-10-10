@@ -3,7 +3,7 @@
 // Reads chunks+vectors and upserts them into the Upstash Vector DB.
 
 import { config as loadEnv } from 'dotenv';
-loadEnv({ path: '.env.local' });
+loadEnv({ path: '.env' });
 
 import { existsSync, createReadStream } from 'fs';
 import * as readline from 'readline';
