@@ -498,7 +498,7 @@ export function MessageBubble({ message }: Props) {
             )}
 
             {/* Streaming cursor */}
-            {message.isStreaming && !isUser && (
+            {message.isStreaming && !isUser && message.content.length > 0 && (
               <span className="mb-cursor" aria-hidden />
             )}
 
@@ -543,7 +543,7 @@ export function MessageBubble({ message }: Props) {
 
               {/* Source cards grid */}
               {showSources && (
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '8px' }}>
+                <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
                   {message.sources!.map((s, i) => (
                     <div
                       key={`${message.id}-source-${i}`}

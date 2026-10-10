@@ -32,6 +32,8 @@ export async function POST(req: Request): Promise<Response> {
   }
 
   const query = lastUser.content.trim();
+  const language: 'en' | 'ur' | 'sd' =
+    body?.language === 'ur' || body?.language === 'sd' ? body.language : 'en';
   const encoder = new TextEncoder();
 
   const stream = new ReadableStream({
@@ -50,7 +52,7 @@ export async function POST(req: Request): Promise<Response> {
         });
 
         // Always stream — the model decides how to respond
-        const sources = await streamAnswer(query, retrieval, (delta) => {
+        const sources = await streamAnswer(query, retrieval, language, (delta) => {
           send('text', { delta });
         });
 

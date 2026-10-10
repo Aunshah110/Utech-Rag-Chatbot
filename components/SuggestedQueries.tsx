@@ -1,212 +1,42 @@
 'use client';
 
+import { useLanguage } from '@/lib/i18n/LanguageContext';
+
 interface Props {
   onPick: (query: string) => void;
 }
 
-const SUGGESTIONS = [
-  'Admission',
-  'Fees',
-  'Scholarships ',
-  'Programs',
-];
-
-// ─── Styles ───────────────────────────────────────────────────────────────────
-const STYLES = `
-  /* ── Badge pill ── */
-  .sq-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 4px 12px;
-    border-radius: 20px;
-    border: 1px solid rgba(255,182,39,0.35);
-    background: rgba(255,182,39,0.1);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 1.4px;
-    text-transform: uppercase;
-    color: #ffb627;
-  }
-  .sq-badge-dot {
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: #ffb627;
-    box-shadow: 0 0 6px rgba(255,182,39,0.7);
-  }
-
-  /* ============================================================
-     HERO TITLE — cursor-tracked background highlight
-     Existing headline dimensions/layout are intentionally preserved.
-     ============================================================ */
-  .sq-headline {
-    position: relative;
-    z-index: 2;
-    display: block;
-    font-size: clamp(1.35rem, 3.5vw, 2rem);
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    line-height: 1.15;
-    text-align: center;
-    color: var(--brown-900, #262424);
-    cursor: default;
-    text-shadow: 0 2px 8px rgba(255, 255, 255, 0.55);
-    isolation: isolate;
-  }
-
-  /* The visible dark text — base layer */
-  .sq-headline-text {
-    position: relative;
-    z-index: 1;
-  }
-
-  /* The black circle that follows the cursor */
-  .sq-headline::before {
-    content: '';
-    position: absolute;
-    width: 60px;
-    height: 60px;
-    left: var(--cursor-x, 50%);
-    top: var(--cursor-y, 50%);
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    background: #262424;
-    opacity: var(--cursor-opacity, 0);
-    pointer-events: none;
-    z-index: 2;
-    transition:
-      left 0.08s linear,
-      top 0.08s linear,
-      opacity 0.2s ease;
-  }
-
-  /* Golden copy of the text, revealed only inside the circle */
-  .sq-headline::after {
-    content: attr(data-text);
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    white-space: nowrap;
-    pointer-events: none;
-    z-index: 3;
-
-    font-family: inherit;
-    font-size: inherit;
-    font-weight: inherit;
-    letter-spacing: inherit;
-    line-height: inherit;
-
-    color: #f1e5c4;
-    -webkit-text-fill-color: #f1e5c4;
-    text-shadow: 0 0 10px rgba(255, 218, 121, 0.6);
-
-    -webkit-mask-image: radial-gradient(
-      circle 32.5px at var(--cursor-x, 50%) var(--cursor-y, 50%),
-      #000 99%,
-      transparent 100%
-    );
-    mask-image: radial-gradient(
-      circle 32.5px at var(--cursor-x, 50%) var(--cursor-y, 50%),
-      #000 99%,
-      transparent 100%
-    );
-
-    opacity: var(--cursor-opacity, 0);
-    transition:
-      -webkit-mask-image 0.08s linear,
-      mask-image 0.08s linear,
-      opacity 0.2s ease;
-  }
-`;
-
-// ─── Component ────────────────────────────────────────────────────────────────
 export function SuggestedQueries({ onPick }: Props) {
-  const handleHeadlineMove = (event: React.MouseEvent<HTMLHeadingElement>) => {
-    const element = event.currentTarget;
-    const textElement = element.querySelector('.sq-headline-text');
+  const { t } = useLanguage();
 
-    if (!textElement) return;
-
-    const rect = element.getBoundingClientRect();
-    const textRect = textElement.getBoundingClientRect();
-
-    // Activate only when the cursor is close to the visible slogan text.
-    const proximity = 35;
-    const closestX = Math.max(textRect.left, Math.min(event.clientX, textRect.right));
-    const closestY = Math.max(textRect.top, Math.min(event.clientY, textRect.bottom));
-    const distance = Math.hypot(event.clientX - closestX, event.clientY - closestY);
-
-    if (distance > proximity) {
-      element.style.setProperty('--cursor-opacity', '0');
-      return;
-    }
-
-    element.style.setProperty('--cursor-x', `${event.clientX - rect.left}px`);
-    element.style.setProperty('--cursor-y', `${event.clientY - rect.top}px`);
-    element.style.setProperty('--cursor-opacity', '1');
-  };
-
-  const handleHeadlineLeave = (
-    event: React.MouseEvent<HTMLHeadingElement>
-  ) => {
-    event.currentTarget.style.setProperty('--cursor-opacity', '0');
-  };
+  const suggestions = [
+    t.suggestion1,
+    t.suggestion2,
+    t.suggestion3,
+    t.suggestion4,
+  ];
 
   return (
-    <>
-      <style>{STYLES}</style>
-
-      <div className="mx-auto max-w-2xl w-full px-4">
-
-        {/* ── Slogan Hero ───────────────────────────────── */}
-        {/* <div className="sq-hero"> */}
-
-        {/* Main slogan */}
-        <h2
-          className="sq-headline"
-          data-text="Your university questions, answered."
-          onMouseMove={handleHeadlineMove}
-          onMouseLeave={handleHeadlineLeave}
-        >
-          <span className="sq-headline-text">
-            Your university questions, answered.
-          </span>
-        </h2>
-
-        {/* Gold divider */}
-        <span className="sq-divider" aria-hidden />
-      </div>
-
-      {/* ── Suggested Queries Label ───────────────────── */}
-      <h3
-        style={{
-          marginBottom: '14px',
-          textAlign: 'center',
-          fontSize: '13px',
-          fontWeight: 500,
-          color: 'rgba(245,245,220,0.5)',
-          letterSpacing: '0.3px',
-        }}
-      >
-        FAQ’s
-      </h3>
-
-      {/* ── Suggestion Buttons ────────────────────────── */}
-      <div className="buttons-container">
-        {SUGGESTIONS.map((q) => (
+    <div className="mx-auto w-full max-w-2xl">
+      <h2 className="mb-5 text-center text-base font-medium text-stone-700">
+        {t.tryAsking}
+      </h2>
+      <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2 sm:gap-3">
+        {suggestions.map((q) => (
           <button
             key={q}
             type="button"
             onClick={() => onPick(q)}
-            className="suggestion-btn"
+            className="group relative overflow-hidden rounded-xl border border-stone-200 bg-white px-4 py-3.5 text-left text-sm font-medium text-stone-700 shadow-sm transition hover:-translate-y-0.5 hover:border-amber-400 hover:bg-amber-50 hover:text-amber-900 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
           >
-            <span>{q}</span>
+            <span className="line-clamp-2 leading-snug">{q}</span>
+            <span
+              aria-hidden
+              className="pointer-events-none absolute inset-y-0 start-0 w-1 bg-gradient-to-b from-amber-400 to-amber-600 opacity-0 transition-opacity group-hover:opacity-100"
+            />
           </button>
         ))}
       </div>
-    </>
+    </div>
   );
 }

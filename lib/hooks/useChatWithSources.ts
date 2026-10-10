@@ -2,6 +2,7 @@
 
 import { useCallback, useRef, useState } from 'react';
 import type { ChatMessage, SourceCitation } from '@/types/chat';
+import type { LanguageCode } from '@/lib/i18n/translations';
 
 interface UseChatStreamOptions {
   onFinish?: (message: ChatMessage) => void;
@@ -15,6 +16,7 @@ export function useChatStream(opts: UseChatStreamOptions = {}) {
     async (
       query: string,
       history: ChatMessage[],
+      language: LanguageCode,
       onDelta: (message: ChatMessage) => void
     ): Promise<void> => {
       const controller = new AbortController();
@@ -22,11 +24,7 @@ export function useChatStream(opts: UseChatStreamOptions = {}) {
       setIsStreaming(true);
 
       const assistantId = `a-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
-
-      const buildMessage = (
-        content: string,
-        extra: Partial<ChatMessage> = {}
-      ): ChatMessage => ({
+      const buildMessage = (content: string, extra: Partial<ChatMessage> = {}): ChatMessage => ({
         id: assistantId,
         role: 'assistant',
         content,
@@ -45,13 +43,11 @@ export function useChatStream(opts: UseChatStreamOptions = {}) {
         const res = await fetch('/api/chat', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ messages }),
+          body: JSON.stringify({ messages, language }),
           signal: controller.signal,
         });
 
-        if (!res.ok || !res.body) {
-          throw new Error(`HTTP ${res.status}`);
-        }
+        if (!res.ok || !res.body) throw new Error(`HTTP ${res.status}`);
 
         const reader = res.body.getReader();
         const decoder = new TextDecoder();
@@ -74,7 +70,6 @@ export function useChatStream(opts: UseChatStreamOptions = {}) {
         while (true) {
           const { done, value } = await reader.read();
           if (done) break;
-
           buffer += decoder.decode(value, { stream: true });
 
           let idx: number;
@@ -85,28 +80,18 @@ export function useChatStream(opts: UseChatStreamOptions = {}) {
             let eventName = 'message';
             const dataLines: string[] = [];
             for (const line of rawEvent.split('\n')) {
-              if (line.startsWith('event:')) {
-                eventName = line.slice(6).trim();
-              } else if (line.startsWith('data:')) {
-                dataLines.push(line.slice(5).trim());
-              }
+              if (line.startsWith('event:')) eventName = line.slice(6).trim();
+              else if (line.startsWith('data:')) dataLines.push(line.slice(5).trim());
             }
-
             if (dataLines.length === 0) continue;
 
             let payload: any;
-            try {
-              payload = JSON.parse(dataLines.join('\n'));
-            } catch {
-              continue;
-            }
+            try { payload = JSON.parse(dataLines.join('\n')); } catch { continue; }
 
             switch (eventName) {
               case 'metadata': {
                 diagnostics = payload;
-                if (payload.confident === false) {
-                  isRefusal = true;
-                }
+                if (payload.confident === false) isRefusal = true;
                 break;
               }
               case 'text': {
@@ -117,20 +102,14 @@ export function useChatStream(opts: UseChatStreamOptions = {}) {
               case 'sources': {
                 sources = Array.isArray(payload.sources)
                   ? payload.sources.map((s: any) =>
-                      typeof s === 'string'
-                        ? { url: s, title: '' }
-                        : { url: s.url, title: s.title ?? '' }
+                      typeof s === 'string' ? { url: s, title: '' } : { url: s.url, title: s.title ?? '' }
                     )
                   : [];
                 flush();
                 break;
               }
-              case 'error': {
-                throw new Error(payload.message ?? 'Stream error');
-              }
-              case 'done': {
-                break;
-              }
+              case 'error': throw new Error(payload.message ?? 'Stream error');
+              case 'done': break;
             }
           }
         }
@@ -141,26 +120,17 @@ export function useChatStream(opts: UseChatStreamOptions = {}) {
           diagnostics,
           isStreaming: false,
         });
-
         onDelta(finalMessage);
         opts.onFinish?.(finalMessage);
       } catch (err: any) {
         if (err?.name === 'AbortError') {
-          onDelta(
-            buildMessage('(cancelled)', {
-              isStreaming: false,
-            })
-          );
+          onDelta(buildMessage('(cancelled)', { isStreaming: false }));
           return;
         }
-
         onDelta(
           buildMessage(
             "I'm having trouble reaching the assistant right now. Please try again in a moment.",
-            {
-              isStreaming: false,
-              error: err?.message ?? 'Unknown error',
-            }
+            { isStreaming: false, error: err?.message ?? 'Unknown error' }
           )
         );
       } finally {
@@ -171,9 +141,7 @@ export function useChatStream(opts: UseChatStreamOptions = {}) {
     [opts]
   );
 
-  const cancel = useCallback(() => {
-    abortRef.current?.abort();
-  }, []);
+  const cancel = useCallback(() => { abortRef.current?.abort(); }, []);
 
   return { send, cancel, isStreaming };
 }
