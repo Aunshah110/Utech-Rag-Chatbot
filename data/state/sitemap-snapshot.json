@@ -1,0 +1,871 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-10T19:11:38.263Z",
+  "urls": {
+    "https://bbsutsd.edu.pk/": {
+      "url": "https://bbsutsd.edu.pk/",
+      "contentHash": "5e7b8cd1c67ca0581ba077bab306d1019a6e6fe214ab1a95953d7d50e4d6d3c2",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/admission-home": {
+      "url": "https://bbsutsd.edu.pk/admission-home",
+      "contentHash": "caa1a1b6988974bddbe472fea65a40f7f2681e78c0a608f720070b3458f218c2",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/noticeboard": {
+      "url": "https://bbsutsd.edu.pk/noticeboard",
+      "contentHash": "fe76834bf1857d49695de11453b1129e0d98d6cd7cf1edf085af864e40bb10ca",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/careers": {
+      "url": "https://bbsutsd.edu.pk/careers",
+      "contentHash": "1691c5ca8a63eee09f2dc9c854482728f25636f9805f750351a15cbe23019e43",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/qec": {
+      "url": "https://bbsutsd.edu.pk/qec",
+      "contentHash": "e0fb88d86f57df1cb4dca15d094e2b03c7f113dc7f369e30cce1642e22704a38",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/oric": {
+      "url": "https://bbsutsd.edu.pk/oric",
+      "contentHash": "0172f3bf3337d96412b93763075fdc8d1cf6dc59bc44547e26113f796c2b92c2",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/sfao": {
+      "url": "https://bbsutsd.edu.pk/sfao",
+      "contentHash": "46c9d54a20bda1b93afc03c79b8e0d358292b1cfd550d7d95d557e8f3825b6cc",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/ccesc": {
+      "url": "https://bbsutsd.edu.pk/ccesc",
+      "contentHash": "3009a88d4d6ec4d6e1447bb1f4ff1b14a320cb5c0d89c4b57aa5d11e6cf4f067",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/ilco": {
+      "url": "https://bbsutsd.edu.pk/ilco",
+      "contentHash": "69e6bb63617a01ad0bf3df2e616933d8b3e70303c2066ba760f5814cb5ebc5d6",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/introduction": {
+      "url": "https://bbsutsd.edu.pk/introduction",
+      "contentHash": "e7a90838df3df02a614a6d5e967b478f7bf299f714b7e546bfb08271932ab28c",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/vice-chancellor": {
+      "url": "https://bbsutsd.edu.pk/vice-chancellor",
+      "contentHash": "e743c9bf4397e70fc8d0eaf5336ef9623b0bed6d269bb068f1e0511ef72f2760",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/vision-mission": {
+      "url": "https://bbsutsd.edu.pk/vision-mission",
+      "contentHash": "505cb18c951ef609fe10c14d731bef9e8e689ef19fc02171cb3cee3417290f56",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/aims-objectives": {
+      "url": "https://bbsutsd.edu.pk/aims-objectives",
+      "contentHash": "4d8abea583c209eb60bb99d82101a057d1a662fcb79eaf346e163227435eb09a",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/history": {
+      "url": "https://bbsutsd.edu.pk/history",
+      "contentHash": "8b23bea5e00c57b8f0ebbb95d4ca711575908be6e4db9a0152fe55ab011d8465",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/registrar": {
+      "url": "https://bbsutsd.edu.pk/registrar",
+      "contentHash": "dbb3ed6a7d8d5124816ac4d04f831b1a5e0716463f4eb47027adfc251d546055",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/administration-pages": {
+      "url": "https://bbsutsd.edu.pk/administration-pages",
+      "contentHash": "72ba56cf65fa8973f65b9e44e00df8949984160cb0345da94bf75a9f601bf865",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/syndicate": {
+      "url": "https://bbsutsd.edu.pk/syndicate",
+      "contentHash": "61ba7e5a85e40d051d7a3d6d97a30d5107dfa4a45feb4c2aff6d2c00e4ba90ea",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/iccces26": {
+      "url": "https://bbsutsd.edu.pk/iccces26",
+      "contentHash": "51335b5affa30844117153387296d724ad6c079722f3ef951edf75a87aeac963",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/iccces24": {
+      "url": "https://bbsutsd.edu.pk/iccces24",
+      "contentHash": "094b6bc6d0f973bd6ab3716d5f4539c774f241ee02629871c7c9141c4241494a",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/undergraduate-program": {
+      "url": "https://bbsutsd.edu.pk/undergraduate-program",
+      "contentHash": "0c27c0ea37e17c08a59b6f6effa3399098b13b19a0854a78d93a1e76def145d7",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/postgraduate-program": {
+      "url": "https://bbsutsd.edu.pk/postgraduate-program",
+      "contentHash": "1b404441f4116f82d39ee5caf17a3e446392494d8941a98ec030e554cce12af6",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/admissions-announcements": {
+      "url": "https://bbsutsd.edu.pk/admissions-announcements",
+      "contentHash": "89732289620cbdf2a94dd5d6fe77017f9c0ae725eb51d361b28196f2b544200b",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/facilities/transport": {
+      "url": "https://bbsutsd.edu.pk/facilities/transport",
+      "contentHash": "2f9eba21588666973915610d29077e55d23bcc51320d24f7b60cdb1706e2ab65",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/facilities/hostel": {
+      "url": "https://bbsutsd.edu.pk/facilities/hostel",
+      "contentHash": "c910c369ff5dd98007b3973b1255b27e1a5f7f72016bd246c95244f4c7faebba",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/facilities/sports": {
+      "url": "https://bbsutsd.edu.pk/facilities/sports",
+      "contentHash": "6befd3248c7f64911fc4bc33f9c89aa64f3dee167d82a02e36c47273860d1674",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-civil-engineering-technology": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-civil-engineering-technology",
+      "contentHash": "a469c2f6f7e2f04d61118bde17fbfcf351a8e51e6fc12897c6caa3b33708d34b",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-electrical-engineering-technology": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-electrical-engineering-technology",
+      "contentHash": "ee761091219f770c1a15850da0bdd556ac84f657ff520ddefaef65ccac80acbc",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-mechanical-engineering-technology": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-mechanical-engineering-technology",
+      "contentHash": "8c749cf782aea3d2de4afe0c2febfbcaf9819a60499e23d0a950181561c2acad",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-electronics-engineering-technology": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-electronics-engineering-technology",
+      "contentHash": "c0b5ed5b98da4d492a744bfec50eb4fc75d8c79a5155b7705de3f46a6cb44e11",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-computer-science": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-computer-science",
+      "contentHash": "d059fc64e1edac952d6a8f194f9d7f97489b7134f0c51a0d5141f888858a6bb9",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-english": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-english",
+      "contentHash": "645c5f61c82470cfa6993b1a0d4a157654b8c33f46ffd9f5c594a00f640c654a",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-artificial-intelligence": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-artificial-intelligence",
+      "contentHash": "083c402b34c12c99622a6d59c71f8f8bc832da509082442be2a08672c312a40d",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-robotics-artificial-intelligence": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-robotics-artificial-intelligence",
+      "contentHash": "7273edbed23b0e4dadbcab3ce1b15a92b7bb9f16cdb9df01019bc3583135eb3d",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-physics": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-physics",
+      "contentHash": "c8ac49f6d627976d33f4e663b25090489ba46787d70bc5c80e53951ca42f66c6",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-bsrs": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-bsrs",
+      "contentHash": "247ab01c15967f4d200ae21bb603cd516033dce7a350643aba238aca9e351c2e",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/departments-list/cet": {
+      "url": "https://bbsutsd.edu.pk/departments-list/cet",
+      "contentHash": "d419d5617637f3bf4026bdbc59190eae58f28575469d11b101d49d1ed44a60d5",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/departments-list/eset": {
+      "url": "https://bbsutsd.edu.pk/departments-list/eset",
+      "contentHash": "b791cd7f14a2b90154b6c289139da55ae080e993d2c9046ce382353a30045f59",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/departments-list/met": {
+      "url": "https://bbsutsd.edu.pk/departments-list/met",
+      "contentHash": "37619f2431fb5b06530d9d58b0797ee87d64f1e28747a1fb442be2e05d0b9b22",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/departments-list/eet": {
+      "url": "https://bbsutsd.edu.pk/departments-list/eet",
+      "contentHash": "214b9ed7b3fd9dbd0480b83bf95b41a29f5327278838605af383280d99123907",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/departments-list/eng": {
+      "url": "https://bbsutsd.edu.pk/departments-list/eng",
+      "contentHash": "09a89c6aa1d284e1a6c45df78705f1b4f3d2813cb489976c3677f0e1a2ec0c6a",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/departments-list/cs": {
+      "url": "https://bbsutsd.edu.pk/departments-list/cs",
+      "contentHash": "32ece6d9c55b2e158a47a8dc374f84ff19692e8acd3e25b0820b1fcd32673b3e",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/departments-list/artificial-intelligence": {
+      "url": "https://bbsutsd.edu.pk/departments-list/artificial-intelligence",
+      "contentHash": "05b741a91e81f0a1b3ad6e3f236d754ea0aadbfb8e03f690f3636bd0d241506f",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/departments-list/physics": {
+      "url": "https://bbsutsd.edu.pk/departments-list/physics",
+      "contentHash": "68ec654d93e11f56fcc3824499207beb6ddb231f71d7e415813926e73e38bd85",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/departments-list/robotics-artificial-intelligence": {
+      "url": "https://bbsutsd.edu.pk/departments-list/robotics-artificial-intelligence",
+      "contentHash": "ebbff3e9b36eb7ab681f803b9ba9f71b39ea416d469dd1d69866c0d82e1482b5",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/departments-list/bsrs": {
+      "url": "https://bbsutsd.edu.pk/departments-list/bsrs",
+      "contentHash": "edb50d1a104f969e130591155a8bc8bd855af2aef798191110ef441a2ec788ec",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/dean-foet": {
+      "url": "https://bbsutsd.edu.pk/dean-foet",
+      "contentHash": "e4100b207d83d11ac666c6c6c032acb13b96a9b510fa3054c98456c2da02487f",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/dean-fosd": {
+      "url": "https://bbsutsd.edu.pk/dean-fosd",
+      "contentHash": "4ec37cd0fb9f110ed1c12a80e98a38e9df8b13a4aefcc19c0612a9c510ca6a00",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/directorate-of-pgs": {
+      "url": "https://bbsutsd.edu.pk/directorate-of-pgs",
+      "contentHash": "c4b7f1f2f9a5da868866e3a7475df6c99ee5149b6f4f530f95d0d3d47698ac36",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/sustainability": {
+      "url": "https://bbsutsd.edu.pk/sustainability",
+      "contentHash": "92c8752f791f2fd00ad197fd0a9e5a7926cd8bcf690f546826dba4d2f4a14c9b",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/impact-rankings": {
+      "url": "https://bbsutsd.edu.pk/impact-rankings",
+      "contentHash": "d733c6cfc31205967d752a3a791a400e04859dc3f7340dfe002e9ffa10205882",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/news-events": {
+      "url": "https://bbsutsd.edu.pk/news-events",
+      "contentHash": "1d6d60326cc1cb6a5cf0e4de932ca23a42c25b1f25d55edf3338d49c0099f557",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/contact": {
+      "url": "https://bbsutsd.edu.pk/contact",
+      "contentHash": "4d819a9137e62a646f5c08cd06d066d74c09559c210e13c1913365c1e8aca4a5",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/vice-chancellor-message": {
+      "url": "https://bbsutsd.edu.pk/vice-chancellor-message",
+      "contentHash": "96f5a189114b36764409eedebda1166eeca7a868c15db8a090c33737f3b8968c",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/undergraduate-program/robotics-ai": {
+      "url": "https://bbsutsd.edu.pk/undergraduate-program/robotics-ai",
+      "contentHash": "cbb8165f446cad64670f12cef5abfa8a12cc04fd4798e87afd4e66e128c13462",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/undergraduate-program/physics": {
+      "url": "https://bbsutsd.edu.pk/undergraduate-program/physics",
+      "contentHash": "c0abc367aa38a0912f8a35b6b0d504c8c208ce963e74b37f53ed18bf054b7d29",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/undergraduate-program/ai": {
+      "url": "https://bbsutsd.edu.pk/undergraduate-program/ai",
+      "contentHash": "c87ffaa56f3acdeb5d7933d00020cf08439c6c72429f1b776edfe2a200610ef8",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/undergraduate-program/cs": {
+      "url": "https://bbsutsd.edu.pk/undergraduate-program/cs",
+      "contentHash": "d3b0c1d0af2aa6d22699b0719c7bca0fee743d5e62f19def7b88cc92f47c1bcc",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/undergraduate-program/english": {
+      "url": "https://bbsutsd.edu.pk/undergraduate-program/english",
+      "contentHash": "144d5c1ec5e44c6fc4058c2d8023c0b84c1e701c1776aa3e5f51f9dcb0a1dfff",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/undergraduate-program/eset": {
+      "url": "https://bbsutsd.edu.pk/undergraduate-program/eset",
+      "contentHash": "63e46dce8d5f07b019faff6d5917a7f8b457d1cd204c81fc7fd9b35a2e036208",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/undergraduate-program/elet": {
+      "url": "https://bbsutsd.edu.pk/undergraduate-program/elet",
+      "contentHash": "c4955ed9e733c5915dd567eb4a4dd306e5ecc7f3679a94518ece2cb0abde6ced",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/undergraduate-program/met": {
+      "url": "https://bbsutsd.edu.pk/undergraduate-program/met",
+      "contentHash": "31b549576c96b62f844d47e1e8f63da9591ba594ba7c036e789ae606fed67a09",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/undergraduate-program/cet": {
+      "url": "https://bbsutsd.edu.pk/undergraduate-program/cet",
+      "contentHash": "1ae3d115e43037cef49bb0248f6f6a7864cb272592b0c336ddede808a05de934",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/undergradute-program": {
+      "url": "https://bbsutsd.edu.pk/undergradute-program",
+      "contentHash": "f58626c0cd6bd8109ae9ee810b899a1cf8984118c927d7558cf0262aadc1bb6f",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/news-events/entry-test-scheduled-on-6th-oct-2026-is-postponed": {
+      "url": "https://bbsutsd.edu.pk/news-events/entry-test-scheduled-on-6th-oct-2026-is-postponed",
+      "contentHash": "b665cb87250746fa9d3a8294b8ba3b63e3afbabde75434ecf346c4aa9f428624",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/news-events/university-industry-strategic-dialogue": {
+      "url": "https://bbsutsd.edu.pk/news-events/university-industry-strategic-dialogue",
+      "contentHash": "ae7856c75c82d55963c9dd61c3b177b8dcd3695ba87a3dbe9085a034a6287aad",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/news-events/bbs-utech-hosts-university-industry-strategic-dialogue": {
+      "url": "https://bbsutsd.edu.pk/news-events/bbs-utech-hosts-university-industry-strategic-dialogue",
+      "contentHash": "74f7fc011d96408655bfef62907e51a3e548f1594e6f5fca8c4ade79e2cf186c",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/news-events/4th-imceet": {
+      "url": "https://bbsutsd.edu.pk/news-events/4th-imceet",
+      "contentHash": "3c64b83395e9fd372a574f8db22ae5f3e176f51235c8a4b610016080bc45ab54",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/news-events/mou-with-m-nawaz-sharif-university-of-engineering-and-technology-multan": {
+      "url": "https://bbsutsd.edu.pk/news-events/mou-with-m-nawaz-sharif-university-of-engineering-and-technology-multan",
+      "contentHash": "95033a940cd9fc4242861d909a7c1ab9ae051fac414b2644c1cab3bb26bb43f9",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/news-events/mou-among-bbsutsd-and-suntang-technology": {
+      "url": "https://bbsutsd.edu.pk/news-events/mou-among-bbsutsd-and-suntang-technology",
+      "contentHash": "fbb89c777b1f6318357249017b297cff40ca61291b6140cc7b978edd01c153b6",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/news-events/mou-with-yunnan-communications-vocational-and-technical-college-china": {
+      "url": "https://bbsutsd.edu.pk/news-events/mou-with-yunnan-communications-vocational-and-technical-college-china",
+      "contentHash": "f13b3bcc9273ef329622ab5f03e26a5d2daa4d1c3ca40ba5a196df6acaaca955",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/mis": {
+      "url": "https://bbsutsd.edu.pk/mis",
+      "contentHash": "d04951d92355121aca63be56e1663ed84975f5de63da994d1eaa5cfe2579ad2f",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/tenders": {
+      "url": "https://bbsutsd.edu.pk/tenders",
+      "contentHash": "7ee64033aba1019aa8ee2685178467a13cb88f034266ac385197852198c70064",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/coming-soon": {
+      "url": "https://bbsutsd.edu.pk/coming-soon",
+      "contentHash": "a1fea66193a279980c8ab7eb7cfbcb322e3910bf4baa92a4d3db1dda9d16ed00",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/sfao/engr-abdul-shakoor-shaikh": {
+      "url": "https://bbsutsd.edu.pk/sfao/engr-abdul-shakoor-shaikh",
+      "contentHash": "a4b0070ac553498ffce4b83dbf65f41be3a4bbc4610e8fd2eda4d393dd0ed8b8",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/sfao/sajid-khan": {
+      "url": "https://bbsutsd.edu.pk/sfao/sajid-khan",
+      "contentHash": "239fb4c20106278c906698e96e6f7514230662435fcf4c80af16ecd64b254a75",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/sfao/umair-ahmed-farooq": {
+      "url": "https://bbsutsd.edu.pk/sfao/umair-ahmed-farooq",
+      "contentHash": "f217031a801bbc868dfff783f6a8d4f056e35b717787b8db55f22aac492c3fbf",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/quality-enhancement-cell": {
+      "url": "https://bbsutsd.edu.pk/quality-enhancement-cell",
+      "contentHash": "59d69003eb8ded3c87918c01c23cec2216285a1493a7b27c1683653dbca3dad8",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/controller-of-exam": {
+      "url": "https://bbsutsd.edu.pk/controller-of-exam",
+      "contentHash": "37ed15c471b66dade2ff898d746fed23f211a4c29d787837900d90c79c5e2e10",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/postgraduate-program/ms-mechanical": {
+      "url": "https://bbsutsd.edu.pk/postgraduate-program/ms-mechanical",
+      "contentHash": "6204098c85b31e558bee673d6c1499b423d51b9e7f82473d00dd437b863dd493",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/postgraduate-program/ms-electronics": {
+      "url": "https://bbsutsd.edu.pk/postgraduate-program/ms-electronics",
+      "contentHash": "625d4d22e80948feb905e7ee7831e264f50e96c9ece54f52f6ac57095e03b408",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/postgraduate-program/ms-electrical": {
+      "url": "https://bbsutsd.edu.pk/postgraduate-program/ms-electrical",
+      "contentHash": "3630990e2d10618a1ca380e8932ee5d622f9852e4b7f2a6f069b6b9fadd6cc2d",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/postgraduate-program/ms-civil": {
+      "url": "https://bbsutsd.edu.pk/postgraduate-program/ms-civil",
+      "contentHash": "7615240c07afa8bebafa1591f75675b2259063311ed19efff348a16071334413",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-civil-engineering-technology/engr-mohammad-abubaker-sheikh": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-civil-engineering-technology/engr-mohammad-abubaker-sheikh",
+      "contentHash": "3af7fddb8a4a3077b46dd05bf210174e28e71c40a971ab0f1274cf016b07dabd",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-civil-engineering-technology/engr-prof-dr-manthar-ali-keerio": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-civil-engineering-technology/engr-prof-dr-manthar-ali-keerio",
+      "contentHash": "ae28f2b27f26ea478d6720268b9839010b7967005c8613abc734c6d83fb88ab3",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-civil-engineering-technology/engr-dr-sadam-hussain-jakhrani": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-civil-engineering-technology/engr-dr-sadam-hussain-jakhrani",
+      "contentHash": "d2a8abe8cafbb429a8f72da5d4f973c9660ff2ad020a126f514c3465cf039bad",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-civil-engineering-technology/dr-asim-ali-abro": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-civil-engineering-technology/dr-asim-ali-abro",
+      "contentHash": "d102409d58e78fb0aa7cfd8bc3cb3b75b5cafca5bf92294685cdf04cdf3bcbcd",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-civil-engineering-technology/engr-shamotra": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-civil-engineering-technology/engr-shamotra",
+      "contentHash": "3b781cb722ec5402ce97777a949498e0adbe2ba9493f0ac333c03ee174d23dcd",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-civil-engineering-technology/engr-jawad-akhtar-siddiqui": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-civil-engineering-technology/engr-jawad-akhtar-siddiqui",
+      "contentHash": "fc12d47dac459d1e9af3e934100f080b0764a795af358af5a22eb976990d6cfb",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-civil-engineering-technology/engr-jabir-ali": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-civil-engineering-technology/engr-jabir-ali",
+      "contentHash": "1f5c1a82f238c8f2c250c5abb284e88e94ca521cf6abe6b1f23f3c1e5208c72a",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-civil-engineering-technology/engr-arun-kumar": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-civil-engineering-technology/engr-arun-kumar",
+      "contentHash": "cf5324cba36708ee7fdd3946c3353357a4ec876842d098ba0d264e7efd137ce3",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-civil-engineering-technology/engr-akhtar-ali": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-civil-engineering-technology/engr-akhtar-ali",
+      "contentHash": "4da88d628337f55d247ac265cf1002f1b425048354bf48651aa82376afc91efa",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-electrical-engineering-technology/engr-safdar-ali-abro": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-electrical-engineering-technology/engr-safdar-ali-abro",
+      "contentHash": "e9180a489c732b8554146eaf9c7bca73859c87a485d99309fc5e16bde3907806",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-electrical-engineering-technology/dr-ghulam-jawad-sirewal": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-electrical-engineering-technology/dr-ghulam-jawad-sirewal",
+      "contentHash": "c0196bd5e86911a85c6e500616efe54186e8f2564a9ca077458f49be8621a94e",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-electrical-engineering-technology/dr-ali-raza-chachar": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-electrical-engineering-technology/dr-ali-raza-chachar",
+      "contentHash": "92cd9d12da7ad581e94dd2451047d13a2db6c68dd2aa59d2073d5875ec793cd9",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-electrical-engineering-technology/dr-hassan-ali-soomro": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-electrical-engineering-technology/dr-hassan-ali-soomro",
+      "contentHash": "67d9506edf77286e3a97374882bfa3a10098a44026f0b42c55bcecd9e3da4d38",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-electrical-engineering-technology/muzamil-hussain": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-electrical-engineering-technology/muzamil-hussain",
+      "contentHash": "084d92f77532f29c1e00c53c449497f541236b1f8d999fbeaadc69e88a26705b",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-electrical-engineering-technology/furqan-latif-memon": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-electrical-engineering-technology/furqan-latif-memon",
+      "contentHash": "73da548cb3c95172e8a564f1bd6363b8adb3f269de779ec7cbc6278d9a5bf5b9",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-electrical-engineering-technology/khalid-hussain-shah": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-electrical-engineering-technology/khalid-hussain-shah",
+      "contentHash": "d72e608742c3af30eec0144b5a128c3e315ac43dd8c51882ac25a3b8dfc8ee46",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-electrical-engineering-technology/engr-sayed-ali-shan": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-electrical-engineering-technology/engr-sayed-ali-shan",
+      "contentHash": "003bc08f604f4bf5779c789d5cace5ff39426ba8a016cc40564533a145fc56bc",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-electrical-engineering-technology/aftab-ali-samejo": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-electrical-engineering-technology/aftab-ali-samejo",
+      "contentHash": "aeb09d940d4cc3cda2a750d74643c2f2215b1b5cd69c6e9ac41b82919ae6d2b0",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-mechanical-engineering-technology/prof-dr-hussain-bux-marri": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-mechanical-engineering-technology/prof-dr-hussain-bux-marri",
+      "contentHash": "ccb06a18e461578ed12856cef2ebe5cc92892e217b5e3166b9f9138478287281",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-mechanical-engineering-technology/dr-aftab-ahmed-soomro": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-mechanical-engineering-technology/dr-aftab-ahmed-soomro",
+      "contentHash": "257ff3147233648fc1962de4bd4eeb3d61752ca93f2d187c8c31ee2d73178a4a",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-mechanical-engineering-technology/engr-abdul-shakoor-shaikh": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-mechanical-engineering-technology/engr-abdul-shakoor-shaikh",
+      "contentHash": "e0d47a204630a9d56035d6b85c1018f047750ef91efd6bf1038afa78714f7137",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-mechanical-engineering-technology/engr-ayaz-ali-mandhan": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-mechanical-engineering-technology/engr-ayaz-ali-mandhan",
+      "contentHash": "9647c0a2aea355749b160e394ffb43eca25b188a5a957e12e5005642d6e70484",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-mechanical-engineering-technology/dr-imdadullah-thaheem": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-mechanical-engineering-technology/dr-imdadullah-thaheem",
+      "contentHash": "ac8b7b573ce9fb2d15e745000bc1fd0a78933c3dbfa8e78cc43d90a39652653f",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-mechanical-engineering-technology/riaz-ahmed-arain": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-mechanical-engineering-technology/riaz-ahmed-arain",
+      "contentHash": "79be5974878dd99b446546275e1386ab130f1e5e14a8ec8214704ca19af98628",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-mechanical-engineering-technology/mr-rukhsar-ali-mazari": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-mechanical-engineering-technology/mr-rukhsar-ali-mazari",
+      "contentHash": "c120e32eda1525d2026a5da2183244b31d239ba764f0cbe95d2dd6d8190188c9",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-mechanical-engineering-technology/engr-ali-mustafa-shah": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-mechanical-engineering-technology/engr-ali-mustafa-shah",
+      "contentHash": "e8e7a02ed03be8cab177af0e8deac962449e555b34b8979b4076b99700fffd87",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-mechanical-engineering-technology/engr-abdul-qadir-channa": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-mechanical-engineering-technology/engr-abdul-qadir-channa",
+      "contentHash": "7032d501f38daf36a2c5146f1047312cbbeef189889ba7559266569d6da55809",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-mechanical-engineering-technology/engr-asmatullah-memon": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-mechanical-engineering-technology/engr-asmatullah-memon",
+      "contentHash": "892b9f03e796c6f070d09fbad367a374fdb9c6283e397f20d7afe7cf5037f67f",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-electronics-engineering-technology/dr-muhammad-saleem-memon": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-electronics-engineering-technology/dr-muhammad-saleem-memon",
+      "contentHash": "cef262a7b3751ac4dbd376f68e528c4e2091c1ae045d6b594618c9e5b0776984",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-electronics-engineering-technology/dr-muhammad-hanif-ahmed": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-electronics-engineering-technology/dr-muhammad-hanif-ahmed",
+      "contentHash": "513cda2fdb5a00818c316a1fe0e368871e8d7f610d504845d14d502876d5fc23",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-electronics-engineering-technology/engr-ghalib-raza-solangi": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-electronics-engineering-technology/engr-ghalib-raza-solangi",
+      "contentHash": "f2e904f948b4d1d5bd28210b6f5e91a75c036a0863b1e9a09befd480dd45d039",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-electronics-engineering-technology/engr-dr-shazia-feroz": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-electronics-engineering-technology/engr-dr-shazia-feroz",
+      "contentHash": "9820b3c9b51c6ab32a3ed8f01f64ccefa9a433342a236bcf3960b68d0b48c1cb",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-electronics-engineering-technology/engr-kundan-kumar": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-electronics-engineering-technology/engr-kundan-kumar",
+      "contentHash": "73f59b5294048eb6465abfc561aa1b5eb66c26c16c782a1e9cfbd119405f2232",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-electronics-engineering-technology/dr-ronak-ali": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-electronics-engineering-technology/dr-ronak-ali",
+      "contentHash": "5527877fce88c70822b868382f2a159040412935053602426b64ee623284f1f3",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-electronics-engineering-technology/engr-izhar-hussain": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-electronics-engineering-technology/engr-izhar-hussain",
+      "contentHash": "b91bea8a15f8cbba8f2a3443de4ed8005dbaea009c2633b02df82ed29ad87825",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-electronics-engineering-technology/engr-saadia-kulsoom-memon": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-electronics-engineering-technology/engr-saadia-kulsoom-memon",
+      "contentHash": "db6b9bf7db6db38bff528f483b4485604a3c731c304990d7a62b9f6790fa0cbb",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-electronics-engineering-technology/engr-arif-hussain": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-electronics-engineering-technology/engr-arif-hussain",
+      "contentHash": "a69e325fa7d70adeba46abaacda9574e219b00a7feb7a87150878797ed97de23",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-computer-science/dr-asad-hameed": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-computer-science/dr-asad-hameed",
+      "contentHash": "28758dde82814bdca3a2de77d156808948dec8944bf51a59487f1a37d492bff0",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-computer-science/muhammad-bux-alvi": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-computer-science/muhammad-bux-alvi",
+      "contentHash": "91db6e908cf16c963184ea4cf5b3075b75ffb24faff2b099431eac32ca09b832",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-computer-science/dr-jawad-hussain": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-computer-science/dr-jawad-hussain",
+      "contentHash": "c1b6a4813671d92f6594bab7da3ed841b5615f222f136759d0a1350baa2ed3b7",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-computer-science/sajjad-ali-lashari": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-computer-science/sajjad-ali-lashari",
+      "contentHash": "19eb6ef34e99adf170b885aab99dd0c7890f989a878dfcf2bce9ce6b2ea54d15",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-computer-science/dr-abdul-khalique": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-computer-science/dr-abdul-khalique",
+      "contentHash": "03ac8367afb0edce60a967a0f87189f4ee79d9259c76f836c5c98bb4c1d111d3",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-computer-science/shagufta-naz": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-computer-science/shagufta-naz",
+      "contentHash": "a18fe5eb61344199eb43edd38379170ba0ec9922fb09a8aeef68447edebfcb9f",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-computer-science/miss-rubab": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-computer-science/miss-rubab",
+      "contentHash": "9b8f0b599c661c186e35d9835d024225a22fd4f2ab81f4ae7bb882d98cc6c9e3",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-computer-science/muhammad-azam": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-computer-science/muhammad-azam",
+      "contentHash": "8184577ea1b6150a2d6402db512366d75cf3d9162b648e36e5d43ae3039ff2eb",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-computer-science/ghulam-murtaza-channa": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-computer-science/ghulam-murtaza-channa",
+      "contentHash": "cd6e34d00486f2b84510e741769eb9c0e7aaaad367c7c42230fbf164a9a70dd3",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-computer-science/engr-muskan": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-computer-science/engr-muskan",
+      "contentHash": "2f150a7fc89b21d82857e95a8fea32ce6771554b472b9e17eee1c063981c1473",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-computer-science/rizwan-ali": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-computer-science/rizwan-ali",
+      "contentHash": "46eb5b0eaaaa3c6f54c5c322caa5838ec94439eb0876bc3cc3d9f6e2b5765213",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-computer-science/deep-rajput": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-computer-science/deep-rajput",
+      "contentHash": "66830bfc171ab88974b8c9ccbe9c8bfdb6eb8775d5b6eafa01cdab5a481e6f73",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-english/asim-ali-shah": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-english/asim-ali-shah",
+      "contentHash": "b3916ede77f0bb388ebbd0d64b3f682c1104ec182b06e1a8ea85d9598922fb83",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-english/rukhsana-soomro": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-english/rukhsana-soomro",
+      "contentHash": "670367e02104d75eccc66269e2204b76fffc1f77fc30356254d9c2c5b33bf597",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-english/muhammad-fazzul-ali-bozdar": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-english/muhammad-fazzul-ali-bozdar",
+      "contentHash": "a3e73c6ad9d47942c3271542e730b2da75703bac947aceebdbd4392320947407",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-english/riaz-mahar": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-english/riaz-mahar",
+      "contentHash": "dcbbbfbf2c7fa715d8845421c572e13f7403137be668197d421d1bc7b0d518bb",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-english/farida-khanum": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-english/farida-khanum",
+      "contentHash": "ededca593c61634ff72e9a6e55a349b619287f97d2bd1be856f6b8b5550fa59b",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-artificial-intelligence/dr-asad-hameed": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-artificial-intelligence/dr-asad-hameed",
+      "contentHash": "db1f3b570fdf6700a2dd940704497868ae86fd0fbaf2b597548846438c1921c0",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-artificial-intelligence/sajjad-ali-lashari": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-artificial-intelligence/sajjad-ali-lashari",
+      "contentHash": "b092be4fa36916d9b9719d84daf220f587416568552390f9b855e58dc02b0c82",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-artificial-intelligence/shagufta-naz": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-artificial-intelligence/shagufta-naz",
+      "contentHash": "6dfb0864d909d5aaa06cc34153d1136bd74b4f41bd245a93e119f92f19785c58",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-robotics-artificial-intelligence/dr-muhammad-saleem-memon": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-robotics-artificial-intelligence/dr-muhammad-saleem-memon",
+      "contentHash": "d36075a906a0db9488b87e8d723eeccebdcb4a10c03c772bdb2f9ea6a2f78dd3",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-robotics-artificial-intelligence/dr-muhammad-hanif-ahmed": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-robotics-artificial-intelligence/dr-muhammad-hanif-ahmed",
+      "contentHash": "9ec4921446866e4dfa93a0af3442928281665d2618b6f34bb2d49846e7121962",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-robotics-artificial-intelligence/engr-ghalib-raza-solangi": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-robotics-artificial-intelligence/engr-ghalib-raza-solangi",
+      "contentHash": "ac304f2afa65fd17bcc1260a76665bfc38cc3e8cbb2136070c4929fb7b5dd1ed",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-robotics-artificial-intelligence/engr-dr-shazia-feroz": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-robotics-artificial-intelligence/engr-dr-shazia-feroz",
+      "contentHash": "2611d7f5660d84ca3bbdbcea86b1fa44f8382e0c2e785ae0e75dcd961bf7ce01",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-robotics-artificial-intelligence/engr-kundan-kumar": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-robotics-artificial-intelligence/engr-kundan-kumar",
+      "contentHash": "852903111a27f8870c9b788820657dd7d575d2dedb95230a2edc4235a1db5e7a",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-robotics-artificial-intelligence/engr-ronak-ali-baladi": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-robotics-artificial-intelligence/engr-ronak-ali-baladi",
+      "contentHash": "ddfde54a1ad0f55fbd0e19bfa63f09b93630aafd00cf4a01c3637eb62da79e82",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-robotics-artificial-intelligence/engr-izhar-hussain": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-robotics-artificial-intelligence/engr-izhar-hussain",
+      "contentHash": "3a2aff776b406b92b454b248628c87596db9eb5f0ecb86a62f8fbe38d1b226eb",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-robotics-artificial-intelligence/engr-saadia-kulsoom-memon": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-robotics-artificial-intelligence/engr-saadia-kulsoom-memon",
+      "contentHash": "3178eb4ba417c02537a1f60871e3e2be99db7d8018ebf42a2e9dffd63f17c485",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-robotics-artificial-intelligence/engr-arif-hussain": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-robotics-artificial-intelligence/engr-arif-hussain",
+      "contentHash": "2d6a37b5cbd9ececcf115b54d0ce5eb443f03b17ca3495bcf71bad6f0f838c5c",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-physics/dr-mushtaque-ahmed-memon": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-physics/dr-mushtaque-ahmed-memon",
+      "contentHash": "ff3fc5b6e03401b7acc0026a94af9764c6a1fb90d1df5e3765badefbfdac168a",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-physics/abdul-qadeer": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-physics/abdul-qadeer",
+      "contentHash": "2759e3b2881872e69c6a716f488c5a3eadd638dfca95e0c8516b756b439e3a37",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-physics/syed-abul-qasim": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-physics/syed-abul-qasim",
+      "contentHash": "5d8d392e1a4ea593963d9b6afe41ceb079dc220069f6dca64df5c2ded1522790",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-physics/mr-sanaullah": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-physics/mr-sanaullah",
+      "contentHash": "6fad4ad65258c3bef80918c39d09688ac8d805780ed209b123361111e75a6ad2",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-physics/mr-haresh-kataria": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-physics/mr-haresh-kataria",
+      "contentHash": "d257903a208f6306a0672d60b8971603f8424ced6dbba66eea9e0291ba49a4ba",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-bsrs/dr-mushtaque-ahmed-memon": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-bsrs/dr-mushtaque-ahmed-memon",
+      "contentHash": "3fd2cb793924e513041a24a75cd8b60953dea36283b5aa1174b184be1d12b8d0",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-bsrs/abdul-qadeer": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-bsrs/abdul-qadeer",
+      "contentHash": "66b08b4d132ddbe41ca58eab3f3f4b29f9a3e8d814d00f8e776c942899731f84",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-bsrs/syed-abul-qasim": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-bsrs/syed-abul-qasim",
+      "contentHash": "d735688ff7bb7e895c5f5896aedd963bf7de63a43b606c4a05a2c0df2e5eb63e",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-bsrs/arif-zia": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-bsrs/arif-zia",
+      "contentHash": "342798e135f91642c73816c7c57e59110b8603973d6990089d92b4424d68ed6c",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-bsrs/bilawal-magsi": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-bsrs/bilawal-magsi",
+      "contentHash": "2b20eee9c3215e88cf06846f928eca82222f065d7568c144c0e89609dda6b47e",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-bsrs/kashif-ali-dharejo": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-bsrs/kashif-ali-dharejo",
+      "contentHash": "7aa360039ffe38df4b1734f134023c6e9e848294a86c7a71fd3ffbfc8ca79e79",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-bsrs/mr-sanaullah": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-bsrs/mr-sanaullah",
+      "contentHash": "3ef7978cf6c80de964ca1e4eec93bc66a36599f6e39e868efb7dbc56be868d65",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/faculty-of-bsrs/mr-haresh-kataria": {
+      "url": "https://bbsutsd.edu.pk/faculty-of-bsrs/mr-haresh-kataria",
+      "contentHash": "1e0280fa8f48ebca22d2d6c91b64515a735d4562748fe648f122155d1fc9c78b",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/pgs-program/ms-civil": {
+      "url": "https://bbsutsd.edu.pk/pgs-program/ms-civil",
+      "contentHash": "205c12d66be808d762564855b7ce19b7ef67492db43ddb2ef2dad5308e4a3769",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/pgs-program/ms-electrical": {
+      "url": "https://bbsutsd.edu.pk/pgs-program/ms-electrical",
+      "contentHash": "7da1d84e8acc4b270b547c6499ee70ab705d0a6c50e4dc4f60373e5671ad8f90",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/pgs-program/ms-electronics": {
+      "url": "https://bbsutsd.edu.pk/pgs-program/ms-electronics",
+      "contentHash": "f3d19c7b7be9401a03f7669057f8d608d88188f0056d6b4b8c4a68350fc04feb",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/pgs-program/ms-mechanical": {
+      "url": "https://bbsutsd.edu.pk/pgs-program/ms-mechanical",
+      "contentHash": "a74586ee3a7e7b48c2de5cd4f6edd66a16e71a15de6ee6d1731cda224bf3f230",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/news-events/innovatex-26": {
+      "url": "https://bbsutsd.edu.pk/news-events/innovatex-26",
+      "contentHash": "3a343990a8a9943e571d9660d25d2c37e0ea2a01c806d54db53186292eecac40",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/news-events/graduation-project-at-bbs-utech-khairpur-mirs": {
+      "url": "https://bbsutsd.edu.pk/news-events/graduation-project-at-bbs-utech-khairpur-mirs",
+      "contentHash": "f6b77d4645b38e07e3e20d44d8170b6bd4e40b05fdbce2359392030636d03d2c",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/news-events/inaugration-of-nisar-ahmed-siddiqui-it-centre-pacca-chang": {
+      "url": "https://bbsutsd.edu.pk/news-events/inaugration-of-nisar-ahmed-siddiqui-it-centre-pacca-chang",
+      "contentHash": "ce2cb84436d76b5638e409ac8fb73ece5b8cc57b607aac1ce05e0dbd42fb66e2",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/news-events/laptop-distribution-ceremony": {
+      "url": "https://bbsutsd.edu.pk/news-events/laptop-distribution-ceremony",
+      "contentHash": "1b3931d93e5f098ee26cf28c282b7ba0d5be02f9dfaebbb473592ab92b9c947c",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/news-events/proud-achievement": {
+      "url": "https://bbsutsd.edu.pk/news-events/proud-achievement",
+      "contentHash": "c060d11182dd47a4c33a111a22b230f7dbc52140041bbd15e669e7f60f96e7b0",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/quality-enhancement-cell/dr-asim-ali-abro": {
+      "url": "https://bbsutsd.edu.pk/quality-enhancement-cell/dr-asim-ali-abro",
+      "contentHash": "b891b05acb89872a0b08c3beef5aafadff8b0b1ab737c6c1cd85fa56c9e13fdf",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/quality-enhancement-cell/engr-shamsuddin-lakho": {
+      "url": "https://bbsutsd.edu.pk/quality-enhancement-cell/engr-shamsuddin-lakho",
+      "contentHash": "3b75d111290128fc2624177a377ad24b2bf01bc079194e89341fafd3d85d7c9f",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    },
+    "https://bbsutsd.edu.pk/quality-enhancement-cell/nabi-bux-maitlo": {
+      "url": "https://bbsutsd.edu.pk/quality-enhancement-cell/nabi-bux-maitlo",
+      "contentHash": "c67f151514267d19ca09e6f2f7343a829c8116ada5b1435c97588c1a36a03804",
+      "lastFetchedAt": "2026-10-10T19:11:38.262Z"
+    }
+  }
+}
